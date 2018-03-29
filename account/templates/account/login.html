@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Вход в голосование{% endblock %}
+
+{% block content %}
+
+
+<div class="section full-height over-hide">
+    <div class="parallax" style="background-image: url('{% static 'img/parallax-login.jpg' %}')"></div>
+    <div class="grey-fade-over"></div>
+    <div class="hero-center-wrap z-bigger">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-4 text-center parallax-fade-top">
+                    <div class="main-title on-dark text-center mb-0">
+                         <h4>Войдите, чтобы начать голосование</h4>
+                        {% if form.errors %}
+                        <div class="main-subtitle-bottom smaller mt-4">Ваше имя пользователя и пароль не совпадают. Пожалуйста, попробуйте еще раз.</div>
+
+                        {% else %}
+                        <div class="main-subtitle-bottom smaller mt-4">Пожалуйста, используйте следующую форму для входа в голосование:</div>
+                        {% endif %}
+                    </div>
+                    <form action="{% url 'account:login' %}" method="post">{% csrf_token %}
+                        <div class="subscribe-box-1 dark for-hero mt-3">
+                            <input name="username" type="text" placeholder="Имя" class="form-control" />
+                        </div>
+                        <div class="subscribe-box-1 dark for-hero mt-3">
+                            <input name="password" type="password" placeholder="Пароль" class="form-control" />
+                        </div>
+                        <div class="clear"></div>
+                        <button type="submit" class="btn btn-primary btn-simple btn-round btn-long mt-4 mb-3" >Войти</button>
+{#                        <a href="#" class="btn btn-primary btn-simple btn-round btn-long mt-4 mb-3" >Войти</a>#}
+                    </form>
+                    <div class="clear"></div>
+                    <p class="color-white p-0 m-0 list-inline-item">У вас еще нет аккаунта?</p> <a href="create-account.html" class="btn-link btn-primary list-inline-item p-0 m-0 ml-1">Зарегестрироваться</a>
+                    <div class="clear"></div>
+                    <p class="color-white p-0 m-0 list-inline-item">Забыли имя пользователя или пароль?</p> <a href="recover-account.html" class="btn-link btn-primary list-inline-item p-0 m-0 ml-1">Восстановить</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+{% block script %}
+    	<script type="text/javascript" src="{% static 'js/custom/custom-login.js' %}"></script>
+{% endblock %}

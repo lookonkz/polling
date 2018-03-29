@@ -1,0 +1,4 @@
+ pip install django-registration
+pip install pillow
+ pip install easy_thumbnails
+pip install djangorestframework

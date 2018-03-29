@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Добро пожаловать на голосование {{ new_user.first_name }}!{% endblock %}
+
+{% block content %}
+    <div class="section full-height over-hide">
+    <div class="parallax" style="background-image: url('{% static 'img/parallax-login.jpg' %}')"></div>
+    <div class="grey-fade-over"></div>
+    <div class="hero-center-wrap z-bigger">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-4 text-center parallax-fade-top">
+                    <div class="main-title on-dark text-center mb-0">
+                         <h4>Добро пожаловать на голосование {{ new_user.first_name }}!</h4>
+                        <p>Ваша аккаунт был успешно создан. Теперь вы можете <a href="{% url "account:login" %}">Войти</a>.</p>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

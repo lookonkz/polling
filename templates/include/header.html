@@ -1,0 +1,70 @@
+{% load static %}
+<div id="menu-wrap" class="cbp-af-header black-menu-background-1st-trans menu-fixed-padding-small menu-shadow">
+    <div class="container nav-top-bar">
+        <div class="row">
+            <div class="col-md-7">
+                <p><i class="fa fa-clock-o mr-1"></i>Пн - Пт: 19.00
+                    <a href="tel:87172341887"><i class="fa fa-phone ml-2 mr-1"></i>
+                        tel
+                    </a>
+                    <a href="mailto:info@kazets.kz">
+                        <i class="fa fa-comment-o ml-2 mr-1"></i> email
+                    </a>
+                </p>
+            </div>
+            <div class="col-md-5" style="text-align: right">
+                <p class="right">
+                   <a class="right" href="http://go.2gis.com/mbu89r"><i class="fa fa-address-card ml-2 mr-1"></i> адрес</a>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse bg-faded">
+                    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavMenuMain" aria-controls="navbarNavMenuMain" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <a class="navbar-brand" href="">
+                        <img src="{% static 'img/logo.png' %}" alt="" class="">
+                    </a>
+                    <div class="collapse navbar-collapse justify-content-end" id="navbarNavMenuMain">
+                        <ul class="navbar-nav">
+                            <li class="nav-item mega-menu active">
+                                <a class="nav-link" href="" >
+                                    Главная
+                                </a>
+
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">
+                                    Регистрация
+                                </a>
+                            </li>
+                             {% if request.user.is_authenticated %}
+                             <li class="nav-item mega-menu">
+                                <a class="nav-link">
+                                    Привет: {{ request.user.first_name }}
+                                </a>
+                             </li>
+                             <li class="nav-item mega-menu">
+                                <a class="nav-link" href="{% url "account:logout" %}">
+                                    Выйти
+                                </a>
+                             </li>
+                            {% else %}
+                             <li class="nav-item mega-menu">
+                                <a class="nav-link" href="{% url 'account:login' %}">
+                                    Войти
+                                </a>
+                             </li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+
