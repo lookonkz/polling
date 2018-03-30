@@ -64,5 +64,5 @@ def register(request):
             return redirect('musics/')
     else:
         form = LoginForm()
-    return render(request, 'musics/register.html', {'form': form}, context)
+    return render(request, 'musics/register.html', {'form': form, 'context': context})
 
