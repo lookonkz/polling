@@ -9,7 +9,6 @@
     <div class="section padding-top-bottom background-dark over-hide">
         <div class="container">
             <div class="row">
-                <div class="clear"></div>
             </div>
         </div>
     </div>
@@ -90,7 +89,7 @@
     <!-- Video & Call To Action Block
 		================================================== -->
         {% if forloop.first %}
-    <div class="section padding-top-bottom background-dark over-hide">
+    <div class="section background-dark over-hide">
         <div class="container">
             <div class="row">
                 <div class="clear"></div>
@@ -107,6 +106,7 @@
                         <button class="btn btn-primary btn-simple btn-round btn-block" type="button" data-id="{{ music.id }}" data-type="music" data-action="like">
                             Проголосовать - <span data-count="like">{{ music.votes.likes.count}}</span>
                         </button>
+                        <br>
                     </div>
                 </div>
             </div>
