@@ -5,78 +5,87 @@
 Голосование
 {% endblock %}
 {% block content %}
-<div class="section" id="home">	
-	
+<div class="section" id="home">
+    <div class="section padding-top-bottom background-dark over-hide">
+        <div class="container">
+            <div class="row">
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+
     <!-- Hero Block
     ================================================== -->
-    
-    <div class="section full-height over-hide background-dark">	
-        <div class="hero-slider-wrap">
-            <div class="customNavigation hero-sinc-1-2">
-                <a class="prev-hero-sync-1"><i class="fa fa-long-arrow-left"></i></a>
-                <a class="next-hero-sync-1"><i class="fa fa-long-arrow-right"></i></a>
-            </div>		
-            <div id="hero-sync1" class="owl-carousel parallax-fade-top">
-                <div class="item full-height background-image-cover" style="background-image:url('{% static 'img/hero-slide-4.jpg' %}')">
-                    <div class="grey-fade-over"></div>	
-                    <div class="hero-center-wrap move-top-2 z-bigger">
-                        <div class="container text-center">
-                            <div class="row">
-                                <div class="col-md-12 corporate-hero-text">	
-                                    <p>we build great</p>
-                                    <h1 class="color-white mt-4">brands</h1>
-                                </div>
-                            </div>	
-                        </div>
-                    </div>	
-                </div>
-                <div class="item full-height background-image-cover" style="background-image:url('{% static 'img/hero-slide-5.jpg' %}')">
-                    <div class="grey-fade-over"></div>
-                    <div class="hero-center-wrap move-top-2 z-bigger">
-                        <div class="container text-center">
-                            <div class="row">
-                                <div class="col-md-12 corporate-hero-text">	
-                                    <p>focused on</p>
-                                    <h1 class="color-white mt-4">strategy</h1>
-                                </div>
-                            </div>	
-                        </div>
-                    </div>							
-                </div>
-                <div class="item full-height background-image-cover" style="background-image:url('{% static 'img/hero-slide-6.jpg' %}')">
-                    <div class="grey-fade-over"></div>	
-                    <div class="hero-center-wrap move-top-2 z-bigger">
-                        <div class="container text-center">
-                            <div class="row">
-                                <div class="col-md-12 corporate-hero-text">	
-                                    <p>specialized in brand</p>
-                                    <h1 class="color-white mt-4">experience</h1>
-                                </div>
-                            </div>	
-                        </div>
-                    </div>					
-                </div>
-            </div>
+{#    #}
+{#    <div class="section full-height over-hide background-dark">	#}
+{#        <div class="hero-slider-wrap">#}
+{#            <div class="customNavigation hero-sinc-1-2">#}
+{#                <a class="prev-hero-sync-1"><i class="fa fa-long-arrow-left"></i></a>#}
+{#                <a class="next-hero-sync-1"><i class="fa fa-long-arrow-right"></i></a>#}
+{#            </div>		#}
+{#            <div id="hero-sync1" class="owl-carousel parallax-fade-top">#}
+{#                <div class="item full-height background-image-cover" style="background-image:url('{% static 'img/hero-slide-4.jpg' %}')">#}
+{#                    <div class="grey-fade-over"></div>	#}
+{#                    <div class="hero-center-wrap move-top-2 z-bigger">#}
+{#                        <div class="container text-center">#}
+{#                            <div class="row">#}
+{#                                <div class="col-md-12 corporate-hero-text">	#}
+{#                                    <p>we build great</p>#}
+{#                                    <h1 class="color-white mt-4">brands</h1>#}
+{#                                </div>#}
+{#                            </div>	#}
+{#                        </div>#}
+{#                    </div>	#}
+{#                </div>#}
+{#                <div class="item full-height background-image-cover" style="background-image:url('{% static 'img/hero-slide-5.jpg' %}')">#}
+{#                    <div class="grey-fade-over"></div>#}
+{#                    <div class="hero-center-wrap move-top-2 z-bigger">#}
+{#                        <div class="container text-center">#}
+{#                            <div class="row">#}
+{#                                <div class="col-md-12 corporate-hero-text">	#}
+{#                                    <p>focused on</p>#}
+{#                                    <h1 class="color-white mt-4">strategy</h1>#}
+{#                                </div>#}
+{#                            </div>	#}
+{#                        </div>#}
+{#                    </div>							#}
+{#                </div>#}
+{#                <div class="item full-height background-image-cover" style="background-image:url('{% static 'img/hero-slide-6.jpg' %}')">#}
+{#                    <div class="grey-fade-over"></div>	#}
+{#                    <div class="hero-center-wrap move-top-2 z-bigger">#}
+{#                        <div class="container text-center">#}
+{#                            <div class="row">#}
+{#                                <div class="col-md-12 corporate-hero-text">	#}
+{#                                    <p>specialized in brand</p>#}
+{#                                    <h1 class="color-white mt-4">experience</h1>#}
+{#                                </div>#}
+{#                            </div>	#}
+{#                        </div>#}
+{#                    </div>					#}
+{#                </div>#}
+{#            </div>#}
+{##}
+{#            <div id="hero-sync2" class="owl-carousel">#}
+{#                <div class="item">#}
+{#                    <p>01 <span>/</span>we build great</p>	#}
+{#                    <h5 class="mt-1"><span>brands</span></h5>#}
+{#                </div>#}
+{#                <div class="item">#}
+{#                    <p>02 <span>/</span>focused on</p>	#}
+{#                    <h5 class="mt-1"><span>strategy</span></h5>#}
+{#                </div>#}
+{#                <div class="item">#}
+{#                    <p>03 <span>/</span>specialized in brand</p>#}
+{#                    <h5 class="mt-1"><span>experience</span></h5>	#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>	#}
+{#        <a href="#scroll-top" class="scroll" ><div class="scroll-down-hero-1"><i class="fa fa-long-arrow-down"></i></div></a>#}
+{#    </div>#}
+{#</div>	#}
 
-            <div id="hero-sync2" class="owl-carousel">
-                <div class="item">
-                    <p>01 <span>/</span>we build great</p>	
-                    <h5 class="mt-1"><span>brands</span></h5>
-                </div>
-                <div class="item">
-                    <p>02 <span>/</span>focused on</p>	
-                    <h5 class="mt-1"><span>strategy</span></h5>
-                </div>
-                <div class="item">
-                    <p>03 <span>/</span>specialized in brand</p>
-                    <h5 class="mt-1"><span>experience</span></h5>	
-                </div>
-            </div>
-        </div>	
-        <a href="#scroll-top" class="scroll" ><div class="scroll-down-hero-1"><i class="fa fa-long-arrow-down"></i></div></a>
-    </div>
-</div>	
 <div class="section" id="about">
+
     {% for music in music_list %}
     <!-- Video & Call To Action Block
 		================================================== -->
