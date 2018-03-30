@@ -3404,7 +3404,7 @@ figure.vimeo a img, figure.youtube a img {
 	height:100%;
 	top:0;
 	left:0;
-	background-color:#323232;
+	background-color:rgb(0, 0, 0);
 	opacity:.7;
 	z-index:300;
 }
