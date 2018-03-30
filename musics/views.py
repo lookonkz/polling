@@ -51,9 +51,7 @@ class MusicList(ListView):
 
 
 def register(request):
-    context = {
-        'GOOGLE_RECAPTCHA_SITE_KEY': settings.GOOGLE_RECAPTCHA_SITE_KEY,
-    }
+    GOOGLE_RECAPTCHA_SITE_KEY: settings.GOOGLE_RECAPTCHA_SITE_KEY,
     if request.method == 'POST':
         form = LoginForm(request.POST)
         if form.is_valid():
@@ -64,5 +62,5 @@ def register(request):
             return redirect('musics/')
     else:
         form = LoginForm()
-    return render(request, 'musics/register.html', {'form': form, 'context': context})
+    return render(request, 'musics/register.html', {'form': form, 'context': GOOGLE_RECAPTCHA_SITE_KEY})
 
