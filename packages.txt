@@ -1,2 +1,7 @@
 pip install pillow
+<<<<<<< HEAD
  pip install easy_thumbnails
+=======
+pip install easy_thumbnails
+pip install django-g-recaptcha
+>>>>>>> 61906c6c931d1dcb26d977819e13e9611cbe1b3d

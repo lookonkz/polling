@@ -28,7 +28,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('musics.urls', namespace='home')),
     path('', include('ajax.urls', namespace='ajax')),
-    path('account/', include('account.urls', namespace='account')),
+    # path('account/', include('account.urls', namespace='account')),
 ]\
               + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)\
               + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

@@ -37,15 +37,10 @@
                                 </a>
 
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{% url 'account:register' %}">
-                                    Регистрация
-                                </a>
-                            </li>
                              {% if request.user.is_authenticated %}
                              <li class="nav-item mega-menu">
                                 <a class="nav-link">
-                                    Привет: {{ request.user.first_name }}
+                                    Привет: {{ request.user.username }}
                                 </a>
                              </li>
                              <li class="nav-item mega-menu">
@@ -53,12 +48,12 @@
                                     Выйти
                                 </a>
                              </li>
-                            {% else %}
-                             <li class="nav-item mega-menu">
-                                <a class="nav-link" href="{% url 'account:login' %}">
-                                    Войти
-                                </a>
-                             </li>
+{#                            {% else %}#}
+{#                             <li class="nav-item mega-menu">#}
+{#                                <a class="nav-link" href="{% url 'account:login' %}">#}
+{#                                    Войти#}
+{#                                </a>#}
+{#                             </li>#}
                             {% endif %}
                         </ul>
                     </div>
