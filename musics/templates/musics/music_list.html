@@ -6,9 +6,14 @@
 {% endblock %}
 {% block content %}
 <div class="section" id="home">
-    <div class="section padding-top-bottom background-dark over-hide">
-        <div class="container">
+    <div class="section background-dark over-hide text-center" style="padding-top: 218px;
+padding-bottom: 33px;">
+        <div class="container" >
             <div class="row">
+                <div class="col-md-12 text-center">
+                    <h1 class="color-white" style="text-align: center">Голосование</h1>
+                </div>
+
             </div>
         </div>
     </div>
@@ -120,7 +125,7 @@
                     <div class="clear"></div>
                     <div class="col-lg-12 call-box-5 mt-lg-5 mt-xl-0"  style="text-align: center; padding: 0.6rem;" data-scroll-reveal="enter bottom move 40px over 0.8s after 0.2s">
                         <h4 class="color-white">#{{ forloop.counter }} - {{ music.name }}</h4>
-                        <div class="video-section">
+                        <div class="video-section" style="max-width: 1200px;">
                             <figure class="youtube rounded-2 img-raised over-hide">
                                 <a href="https://www.youtube-nocookie.com/embed/{{ music.music }}">
                                     <img src="{% static 'img/obloshka.jpg' %}" alt="image"  class="rounded-2 over-hide"/>
@@ -134,9 +139,10 @@
                         </div>
                     </div>
                 </div>
+                <br>
             </div>
         </div>
-        <br>
+
 {#        {% endif %}#}
     {% endfor %}
 </div>
