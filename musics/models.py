@@ -39,7 +39,6 @@ class LikeDislike(models.Model):
 # Create your models here.
 class Music(models.Model):
     name = models.CharField(verbose_name='Название песни', max_length=100)
-    image = ThumbnailerImageField(verbose_name='Фото', upload_to='music/photo', default=None, blank=True)
     music = models.CharField(verbose_name='ссылка', max_length=300)
     votes = GenericRelation(LikeDislike, related_query_name='musics')
     article_date = models.DateTimeField('Дата публикации', auto_now_add=timezone.now, blank=True)

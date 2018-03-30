@@ -85,23 +85,19 @@
         <div class="container">
             <div class="row">
                 <div class="clear"></div>
-                <div class="col-lg-8 mt-lg-5 mt-xl-0">
+                <div class="col-lg-12 call-box-5 mt-lg-5 mt-xl-0"  style="text-align: center; padding: 0.6rem;" data-scroll-reveal="enter bottom move 40px over 0.8s after 0.2s">
+                    <h4 class="color-white">#{{ forloop.counter }} - {{ music.name }}</h4>
                     <div class="video-section">
                         <figure class="youtube rounded-2 img-raised over-hide">
                             <a href="https://www.youtube-nocookie.com/embed/{{ music.music }}">
-                                <img src="{{ music.image|thumbnail_url:'avatar' }}" alt="image"  class="rounded-2 over-hide"/>
+                                <img src="{% static 'img/obloshka.jpg' %}" alt="image"  class="rounded-2 over-hide"/>
                             </a>
                         </figure>
                     </div>
-                </div>
-                <div class="col-lg-4 mt-4 mt-lg-0 mt-xl-4" data-scroll-reveal="enter bottom move 40px over 0.8s after 0.2s">
-                    <div class="call-box-5 dark" style="text-align: center; padding: 0.6rem;"><br>
-                        <h4 class="color-white">#{{ forloop.counter }}</h4><br>
-                        <h4 class="color-white">{{ music.name }}</h4><br>
+                    <div class="col-lg-12 mt-4 mt-lg-0 mt-xl-4" data-scroll-reveal="enter bottom move 40px over 0.8s after 0.2s">
                         <button class="btn btn-primary btn-simple btn-round btn-block" type="button" data-id="{{ music.id }}" data-type="music" data-action="like">
-                            <span data-count="like">{{ music.votes.likes.count}}</span>
+                            Проголосовать - <span data-count="like">{{ music.votes.likes.count}}</span>
                         </button>
-                        <br>
                     </div>
                 </div>
             </div>
@@ -113,21 +109,19 @@
             <div class="container">
                 <div class="row">
                     <div class="clear"></div>
-                    <div class="col-lg-8 mt-lg-5 mt-xl-0">
+                    <div class="col-lg-12 call-box-5 mt-lg-5 mt-xl-0"  style="text-align: center; padding: 0.6rem;" data-scroll-reveal="enter bottom move 40px over 0.8s after 0.2s">
+                        <h4 class="color-white">#{{ forloop.counter }} - {{ music.name }}</h4>
                         <div class="video-section">
                             <figure class="youtube rounded-2 img-raised over-hide">
                                 <a href="https://www.youtube-nocookie.com/embed/{{ music.music }}">
-                                    <img src="{{ music.image|thumbnail_url:'avatar' }}" alt="image"  class="rounded-2 over-hide"/>
+                                    <img src="{% static 'img/obloshka.jpg' %}" alt="image"  class="rounded-2 over-hide"/>
                                 </a>
                             </figure>
                         </div>
-                    </div>
-                    <div class="col-lg-4 mt-4 mt-lg-0 mt-xl-4" data-scroll-reveal="enter bottom move 40px over 0.8s after 0.2s">
-                        <div class="call-box-5 dark" style="text-align: center; padding: 0.6rem;"><br>
-                            <h4 class="color-white">#{{ forloop.counter }}</h4><br>
-                            <h4 class="color-white">{{ music.name }}</h4><br>
-                            <button class="btn btn-primary btn-simple btn-round btn-block" type="button"><i class="funky-ui-icon icon-Like-2" style="font-size: 19px; -webkit-font-smoothing: auto;"></i></button>
-                            <br>
+                        <div class="col-lg-12 mt-4 mt-lg-0 mt-xl-4" data-scroll-reveal="enter bottom move 40px over 0.8s after 0.2s">
+                            <button class="btn btn-primary btn-simple btn-round btn-block" type="button" data-id="{{ music.id }}" data-type="music" data-action="like">
+                                Проголосовать - <span data-count="like">{{ music.votes.likes.count}}</span>
+                            </button>
                         </div>
                     </div>
                 </div>
