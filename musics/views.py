@@ -9,7 +9,7 @@ from .forms import LoginForm
 from django.contrib.auth.models import User
 from django.contrib import auth
 from django.conf import settings
-
+from g_recaptcha.validate_recaptcha import validate_captcha
 
 class VotesView(View):
     model = None  # Модель данных - Статьи или Комментарии
@@ -50,6 +50,7 @@ class MusicList(ListView):
     paginate_by = 50
 
 
+@validate_captcha
 def register(request):
     GOOGLE_RECAPTCHA_SITE_KEY = settings.GOOGLE_RECAPTCHA_SITE_KEY
     if request.method == 'POST':
