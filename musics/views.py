@@ -51,7 +51,7 @@ class MusicList(ListView):
 
 
 def register(request):
-    GOOGLE_RECAPTCHA_SITE_KEY: settings.GOOGLE_RECAPTCHA_SITE_KEY
+    GOOGLE_RECAPTCHA_SITE_KEY = settings.GOOGLE_RECAPTCHA_SITE_KEY
     if request.method == 'POST':
         form = LoginForm(request.POST)
         if form.is_valid():
