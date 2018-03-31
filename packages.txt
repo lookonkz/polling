@@ -1,7 +1,12 @@
+ pip install django-registration
 pip install pillow
 <<<<<<< HEAD
  pip install easy_thumbnails
+<<<<<<< HEAD
 =======
 pip install easy_thumbnails
 pip install django-g-recaptcha
 >>>>>>> e6dd39dbb071ca4b7d64bb024e02d8401fb8e59e
+=======
+pip install djangorestframework
+>>>>>>> parent of 9b4ecc9... adsfadsf
