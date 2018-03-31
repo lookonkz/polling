@@ -2361,7 +2361,7 @@ body.royal_preloader {
 	position: relative;
 	width:100%;
 	margin:0 auto;
-	max-width:1200px;
+	max-width:800px;
 }
 .video-wrapper, figure.vimeo, figure.youtube {
 	margin:0;

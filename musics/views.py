@@ -1,11 +1,15 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 import json
 from django.views import View
 from django.contrib.contenttypes.models import ContentType
 from .models import LikeDislike, Music
 from django.http import HttpResponse
 from django.views.generic.list import ListView
-
+from .forms import LoginForm
+from django.contrib.auth.models import User
+from django.contrib import auth
+from django.conf import settings
+from g_recaptcha.validate_recaptcha import validate_captcha
 
 class VotesView(View):
     model = None  # Модель данных - Статьи или Комментарии
@@ -46,4 +50,18 @@ class MusicList(ListView):
     paginate_by = 50
 
 
+@validate_captcha
+def register(request):
+    GOOGLE_RECAPTCHA_SITE_KEY = settings.GOOGLE_RECAPTCHA_SITE_KEY
+    if request.method == 'POST':
+        form = LoginForm(request.POST)
+        if form.is_valid():
+            user = User.objects.create(username=form.cleaned_data['username'], password='dafadsfa$rRRR',
+                                       email=form.cleaned_data['email'])
+            user.save()
+            auth.login(request, user)
+            return redirect('musics/')
+    else:
+        form = LoginForm()
+    return render(request, 'musics/register.html', {'form': form, 'context': GOOGLE_RECAPTCHA_SITE_KEY})
 
