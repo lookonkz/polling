@@ -10,6 +10,8 @@ from django.contrib.auth.models import User
 from django.contrib import auth
 from django.conf import settings
 from g_recaptcha.validate_recaptcha import validate_captcha
+from .models import Music
+
 
 class VotesView(View):
     model = None  # Модель данных - Статьи или Комментарии
@@ -32,6 +34,9 @@ class VotesView(View):
         except LikeDislike.DoesNotExist:
             obj.votes.create(user=request.user, vote=self.vote_type)
             result = True
+
+        obj.reiting =int(obj.votes.likes().count())
+        obj.save()
 
         return HttpResponse(
             json.dumps({
