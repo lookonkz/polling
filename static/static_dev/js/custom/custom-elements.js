@@ -1,33 +1,4 @@
-(function($) { "use strict";
-
-
-	//Preloader
-
-	Royal_Preloader.config({
-		mode           : 'progress',
-		background     : '#ffffff',
-		showProgress   : true,
-		showPercentage : false
-	});
-
-
-	// /* Scroll Animation */
-	//
-	// window.scrollReveal = new scrollReveal();
-
-
-	//Parallax & fade on scroll
-
-	function scrollBanner() {
-	  $(document).scroll(function(){
-		var scrollPos = $(this).scrollTop();
-		$('.parallax-fade-top').css({
-		  'top' : (scrollPos/2)+'px',
-		  'opacity' : 1-(scrollPos/750)
-		});
-	  });
-	}
-	scrollBanner();
+(function($) {
 
 	
 	
@@ -69,21 +40,7 @@
 			return false;
 		})
 
-			
-		// Type text
-		
-		var typed = new Typed('#typed-1', {
-			strings: ['Belgrade', 'New York', 'Athens', 'Berlin', 'Copenhagen', 'Moscow', 'Prague', 'Paris'],
-			typeSpeed:45,
-			backSpeed:0,
-			startDelay:200,
-			backDelay:2200,
-			loop:true,
-			loopCount:false,
-			showCursor:true,
-			cursorChar:"|",
-			attr:null
-		});	
+
 		
 		var typed2 = new Typed('#typed-2', {
 			strings: ['a web developer.', 'a web designer.'],
