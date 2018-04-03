@@ -34,7 +34,7 @@
 	<link rel="apple-touch-icon" sizes="114x114" href="{% static 'apple-touch-icon-114x114.png' %}">
 </head>
 <body class="background-dark">
-
+<div id="royal_preloader"></div>
 
 {% include 'include/header.html' %}
 {% block login %}{% endblock %}
@@ -42,6 +42,7 @@
 
     <div class="scroll-to-top" style="display: block;"><i class="fa fa-angle-up"></i></div>
 <script type="text/javascript" src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/royal_preloader.min.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/tether.min.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/plugins.js' %}"></script>
