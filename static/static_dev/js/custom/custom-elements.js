@@ -96,7 +96,7 @@
 			var PlaceV = $(this).parent();
 			if ($(this).parent().hasClass('youtube')) {
 				$(this).parent().wrapAll('<div class="video-wrapper">');
-				$(PlaceV).html('<iframe frameborder="0" height="333" src="' + videoLink + '?autoplay=1&showinfo=0" title="YouTube video player" width="547"></iframe>');
+				$(PlaceV).html('<iframe frameborder="0" height="333" src="' + videoLink + '?rel=0&amp;autoplay=1&showinfo=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>');
 			} else {
 				$(this).parent().wrapAll('<div class="video-wrapper">');
 				$(PlaceV).html('<iframe src="' + videoLink + '?title=0&amp;byline=0&amp;portrait=0&amp;autoplay=1&amp;color=6dc234" width="500" height="281" frameborder="0"></iframe>');
