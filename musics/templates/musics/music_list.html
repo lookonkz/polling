@@ -187,20 +187,8 @@ padding-bottom: 33px;">
     });
 </script>
 <script type="text/javascript">
-{#$(document).ready(function() {#}
-{#    $('#like').click(function() {#}
-{#        var count = 0;#}
-{#        count++;#}
-{#        console.log(count);#}
-{#        if (count==7){#}
-{#            return window.location.href = '{% url 'account:logout' %}';#}
-{#        }#}
-{#    });#}
-{#});#}
-
-var count = 0
+var count = 0;
 $('button')
-    .data('counter', 0)
     .click(function() {
         count ++  ;
         if (count >= 7){
