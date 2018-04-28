@@ -15,6 +15,9 @@
                 <div class="col-md-4 text-center parallax-fade-top">
                     <div class="main-title on-dark text-center mb-0">
                          <h4 style="text-transform: inherit;">Дауыс беруге қатысу үшін тіркеліңіз</h4>
+                        {% if not form.is_valid %}
+                            <div class="main-subtitle-bottom smaller mt-4">Кешіріңіз! Тіркелу жасау жүзеге аспады!</div>
+                        {% endif %}
                         {% if form.errors %}
                         <div class="main-subtitle-bottom smaller mt-4">Кешіріңіз! Тіркелу жасау жүзеге аспады!</div>
                         {% else %}
