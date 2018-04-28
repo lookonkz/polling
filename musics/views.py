@@ -54,7 +54,7 @@ class MusicList(ListView):
     template_name = 'musics/music_list.html'
     paginate_by = 50
 
-
+#
 # @validate_captcha
 # def register(request):
 #     GOOGLE_RECAPTCHA_SITE_KEY = settings.GOOGLE_RECAPTCHA_SITE_KEY
@@ -70,7 +70,7 @@ class MusicList(ListView):
 #         form = LoginForm()
 #     return render(request, 'musics/register.html', {'form': form, 'context': GOOGLE_RECAPTCHA_SITE_KEY})
 #
-#
+
 
 @validate_captcha
 def register(request):
@@ -78,8 +78,10 @@ def register(request):
     if request.method == 'POST':
         form = UserRegistrationForm(request.POST)
         if form.is_valid():
-            form = form.save(commit=False)
-            form.save()
+            user = User.objects.create(username=form.cleaned_data['username'], password='dafadsfa$rRRR',
+                                       email=form.cleaned_data['email'])
+            user.save()
+            auth.login(request, user)
             return redirect('musics/')
     else:
         form = UserRegistrationForm()
