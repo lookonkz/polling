@@ -52,7 +52,7 @@ class MusicList(ListView):
     model = Music
     context_object_name = 'music_list'
     template_name = 'musics/music_list.html'
-    paginate_by = 50
+    paginate_by = 7
 
 #
 # @validate_captcha

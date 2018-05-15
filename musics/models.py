@@ -43,11 +43,12 @@ class Music(models.Model):
     votes = GenericRelation(LikeDislike, related_query_name='musics/photo', default=None, blank=True)
     article_date = models.DateTimeField('Дата публикации', auto_now_add=timezone.now, blank=True)
     reiting = models.IntegerField(verbose_name='количество голосов', default=0, blank=True)
+    sorted_list = models.SmallIntegerField(verbose_name='порядок', db_index=True, default=1, blank=True)
 
     class Meta:
         verbose_name = 'Музыка'
         verbose_name_plural = 'Музыка'
-        ordering = ['-reiting']
+        ordering = ['sorted_list']
 
     def __str__(self):
         return self.name
