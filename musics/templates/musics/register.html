@@ -5,6 +5,7 @@
       <script src='https://www.google.com/recaptcha/api.js'></script>
 {% endblock %}
 {% block content %}
+
     <div class="section full-height over-hide">
     <div class="parallax" style="background-image: url('{% static 'img/parallax-login.jpg' %}')"></div>
     <div class="grey-fade-over"></div>
@@ -14,6 +15,9 @@
                 <div class="col-md-4 text-center parallax-fade-top">
                     <div class="main-title on-dark text-center mb-0">
                          <h4 style="text-transform: inherit;">Дауыс беруге қатысу үшін тіркеліңіз</h4>
+                        {% if not form.is_valid %}
+                            <div class="main-subtitle-bottom smaller mt-4">Кешіріңіз! Тіркелу жасау жүзеге аспады!</div>
+                        {% endif %}
                         {% if form.errors %}
                         <div class="main-subtitle-bottom smaller mt-4">Кешіріңіз! Тіркелу жасау жүзеге аспады!</div>
                         {% else %}

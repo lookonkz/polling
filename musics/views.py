@@ -5,11 +5,13 @@ from django.contrib.contenttypes.models import ContentType
 from .models import LikeDislike, Music
 from django.http import HttpResponse
 from django.views.generic.list import ListView
-from .forms import LoginForm
+from .forms import LoginForm, UserRegistrationForm
 from django.contrib.auth.models import User
 from django.contrib import auth
 from django.conf import settings
 from g_recaptcha.validate_recaptcha import validate_captcha
+from .models import Music
+
 
 
 class VotesView(View):
@@ -34,6 +36,9 @@ class VotesView(View):
             obj.votes.create(user=request.user, vote=self.vote_type)
             result = True
 
+        obj.reiting =int(obj.votes.likes().count())
+        obj.save()
+
         return HttpResponse(
             json.dumps({
                 "result": result,
@@ -48,14 +53,31 @@ class MusicList(ListView):
     model = Music
     context_object_name = 'music_list'
     template_name = 'musics/music_list.html'
-    paginate_by = 50
+    paginate_by = 7
+
+#
+# @validate_captcha
+# def register(request):
+#     GOOGLE_RECAPTCHA_SITE_KEY = settings.GOOGLE_RECAPTCHA_SITE_KEY
+#     if request.method == 'POST':
+#         form = LoginForm(request.POST)
+#         if form.is_valid():
+#             user = User.objects.create(username=form.cleaned_data['username'], password='dafadsfa$rRRR',
+#                                        email=form.cleaned_data['email'])
+#             user.save()
+#             auth.login(request, user)
+#             return redirect('musics/')
+#     else:
+#         form = LoginForm()
+#     return render(request, 'musics/register.html', {'form': form, 'context': GOOGLE_RECAPTCHA_SITE_KEY})
+#
 
 
 @validate_captcha
 def register(request):
     GOOGLE_RECAPTCHA_SITE_KEY = settings.GOOGLE_RECAPTCHA_SITE_KEY
     if request.method == 'POST':
-        form = LoginForm(request.POST)
+        form = UserRegistrationForm(request.POST)
         if form.is_valid():
             user = User.objects.create(username=form.cleaned_data['username'], password='dafadsfa$rRRR',
                                        email=form.cleaned_data['email'])
@@ -63,6 +85,5 @@ def register(request):
             auth.login(request, user)
             return redirect('musics/')
     else:
-        form = LoginForm()
+        form = UserRegistrationForm()
     return render(request, 'musics/register.html', {'form': form, 'context': GOOGLE_RECAPTCHA_SITE_KEY})
-

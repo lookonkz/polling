@@ -17,35 +17,99 @@ padding-bottom: 33px;">
             </div>
         </div>
     </div>
-
-    <div class="section" id="about">
-
-        {% for music in music_list %}
-        <div class="section  background-dark over-hide">
-            <div class="container">
-                <div class="row">
-                    <div class="clear"></div>
-                    <div class="col-lg-12 call-box-5 mt-lg-5 mt-xl-0"  style="text-align: center; padding: 0.6rem;" data-scroll-reveal="enter bottom move 40px over 0.8s after 0.2s">
-                        <h4 class="color-white">#{{ forloop.counter }}: {{ music.name }}</h4>
-                        <div class="video-section" style="max-width: 1200px;">
-                            <figure class="youtube rounded-2 img-raised over-hide">
-                                <a href="https://www.youtube-nocookie.com/embed/{{ music.music }}">
-                                    <img src="{% static 'img/pd1.jpg' %}" alt="image"  class="rounded-2 over-hide"/>
-                                </a>
-                            </figure>
+</div>
+ <div class="section background-dark over-hide text-center" id="about">
+    <div class="container" >
+        <div class="row">
+            <div class="col-lg-12 mt-lg-5 mt-xl-0">
+                <div id="accordion-1" align="button-kike" class="accordion-style dark" role="tablist" aria-multiselectable="true">
+                    {% for music in music_list %}
+                    <div class="card">
+                        <div class="card-header" role="tab" id="headingOne-{{ music.id }}">
+                            <a data-toggle="collapse" data-parent="#accordion-{{ music.id }}" href="#collapseOne-{{ music.id }}" aria-expanded="false" aria-controls="collapseOne" class="collapsed">
+                               {{ forloop.counter }}: {{ music.name }}
+                            </a>
                         </div>
-                        <div class="col-lg-12 mt-4 mt-lg-0 mt-xl-4" data-scroll-reveal="enter bottom move 40px over 0.8s after 0.2s">
 
-                            <button class="btn btn-primary btn-simple btn-round btn-block" type="button" data-id="{{ music.id }}" data-type="music" data-action="like">
-                                Дауыс беру - <span data-count="like">{{ music.votes.likes.count}}</span>
-                            </button>
+                        <div id="collapseOne-{{ music.id }}" class="collapse" role="tabpanel" aria-labelledby="headingOne-1" aria-expanded="false" style="">
+                            <div class="card-block" >
+                                <div class="video-section" style="max-width: 1200px;">
+                                    <iframe class=" rounded-2 img-raised over-hide vvvv"  src="https://www.youtube.com/embed/{{ music.music }}?rel=0&amp;showinfo=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                                </div>
+                                <div class="col-lg-12 mt-4 mt-lg-0 mt-xl-4" data-scroll-reveal="enter bottom move 40px over 0.8s after 0.2s" style="padding: 6px">
+
+                                    <button id="like" class="btn btn-primary btn-simple btn-round btn-block" type="button" data-id="{{ music.id }}" data-type="music" data-action="like">
+                                        Дауыс беру
+{#                                        - <span data-count="like">{{ music.votes.likes.count}}</span>#}
+                                    </button>
+                                </div>
+                            </div>
                         </div>
                     </div>
+                      {% endfor %}
+
                 </div>
-                <br>
             </div>
         </div>
-        {% endfor %}
+    </div>
+
+
+{#   #}
+{#    {% for music in music_list %}#}
+{#        <div class="section  background-dark over-hide">#}
+{#            <div class="container">#}
+{#                <div class="row">#}
+{#                    <div class="clear"></div>#}
+{#                    <div class="col-lg-12 call-box-5 mt-lg-5 mt-xl-0"  style="text-align: center; padding: 0.6rem;" data-scroll-reveal="enter bottom move 40px over 0.8s after 0.2s">#}
+{#                        <h4 class="color-white">#{{ forloop.counter }}: {{ music.name }}</h4>#}
+{#                        <div class="video-section" style="max-width: 1200px;">#}
+{#                            <iframe class="youtube rounded-2 img-raised over-hide" width="560" height="315" src="https://www.youtube.com/embed/{{ music.music }}?rel=0&amp;showinfo=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>#}
+{#                        </div>#}
+{#                        <div class="col-lg-12 mt-4 mt-lg-0 mt-xl-4" data-scroll-reveal="enter bottom move 40px over 0.8s after 0.2s">#}
+{##}
+{#                            <button id="like" class="btn btn-primary btn-simple btn-round btn-block" type="button" data-id="{{ music.id }}" data-type="music" data-action="like">#}
+{#                                Дауыс беру#}
+{#                                - <span data-count="like">{{ music.votes.likes.count}}</span>#}
+{#                            </button>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+{#                <br>#}
+{#            </div>#}
+{#        </div>#}
+{#    {% endfor %}#}
+
+
+
+
+{##}
+{#        {% for music in music_list %}#}
+{#        <div class="section  background-dark over-hide">#}
+{#            <div class="container">#}
+{#                <div class="row">#}
+{#                    <div class="clear"></div>#}
+{#                    <div class="col-lg-12 call-box-5 mt-lg-5 mt-xl-0"  style="text-align: center; padding: 0.6rem;" data-scroll-reveal="enter bottom move 40px over 0.8s after 0.2s">#}
+{#                        <h4 class="color-white">#{{ forloop.counter }}: {{ music.name }}</h4>#}
+{#                        <div class="video-section" style="max-width: 1200px;">#}
+{#                            <figure class="youtube rounded-2 img-raised over-hide">#}
+{#                                <a href="https://www.youtube-nocookie.com/embed/{{ music.music }}">#}
+{#                                    <img src="{{ music.image|thumbnail_url:'avatar' }}" alt="image"  class="rounded-2 over-hide"/>#}
+{#                                </a>#}
+{#                            </figure>#}
+{#                        </div>#}
+{#                        <div class="col-lg-12 mt-4 mt-lg-0 mt-xl-4" data-scroll-reveal="enter bottom move 40px over 0.8s after 0.2s">#}
+{##}
+{#                            <button id="like" class="btn btn-primary btn-simple btn-round btn-block" type="button" data-id="{{ music.id }}" data-type="music" data-action="like">#}
+{#                                Дауыс беру#}
+{#                                - <span data-count="like">{{ music.votes.likes.count}}</span>#}
+{#                            </button>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+{#                <br>#}
+{#            </div>#}
+{#        </div>#}
+{#        {% endfor %}#}
     </div>
     <div class="section padding-top-bottom background-dark over-hide">
     </div>
@@ -87,6 +151,7 @@ padding-bottom: 33px;">
                 success : function (json) {
                     like.find("[data-count='like']").text(json.like_count);
                     dislike.find("[data-count='dislike']").text(json.dislike_count);
+                    $(like).html('Сіз дауыс бердіңіз')
                 }
             });
 
@@ -109,6 +174,7 @@ padding-bottom: 33px;">
                 success : function (json) {
                     dislike.find("[data-count='dislike']").text(json.dislike_count);
                     like.find("[data-count='like']").text(json.like_count);
+
                 }
             });
 
@@ -120,5 +186,17 @@ padding-bottom: 33px;">
         $('[data-action="like"]').click(like);
     });
 </script>
-<script type="text/javascript" src="{% static 'js/custom/custom-op-corporate.js' %}"></script>
+<script type="text/javascript">
+var count = 0;
+$('button')
+    .click(function() {
+        count ++  ;
+        if (count >= 7){
+            return window.location.href = '{% url 'account:logout' %}';
+        }
+});
+</script>
+ <script type="text/javascript" src="{% static 'js/custom/custom-elements.js' %}"></script>
+
+{#<script type="text/javascript" src="{% static 'js/custom/custom-op-corporate.js' %}"></script>#}
 {% endblock %}
