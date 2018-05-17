@@ -11,9 +11,11 @@ from django.contrib import auth
 from django.conf import settings
 from g_recaptcha.validate_recaptcha import validate_captcha
 from .models import Music
+from django.views.decorators.cache import cache_page
+from django.utils.decorators import method_decorator
 
 
-
+@method_decorator(cache_page(60 * 50), name='dispatch')
 class VotesView(View):
     model = None  # Модель данных - Статьи или Комментарии
     vote_type = None  # Тип комментария Like/Dislike
