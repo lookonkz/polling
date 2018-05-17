@@ -11,6 +11,7 @@ from django.contrib import auth
 from django.conf import settings
 from g_recaptcha.validate_recaptcha import validate_captcha
 
+
 class VotesView(View):
     model = None  # Модель данных - Статьи или Комментарии
     vote_type = None  # Тип комментария Like/Dislike
