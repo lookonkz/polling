@@ -1,24 +1,11 @@
-from django.shortcuts import render, redirect
-import json
 from django.views import View
 from django.contrib.contenttypes.models import ContentType
 from .models import LikeDislike, MusicClip, Category
-from django.http import HttpResponse
 from django.views.generic.list import ListView
-<<<<<<< HEAD
 from django.views.generic.base import TemplateView
-from .models import MusicTrack
 from django.http import JsonResponse
-=======
-from .forms import LoginForm, UserRegistrationForm
-from django.contrib.auth.models import User
-from django.contrib import auth
-from django.conf import settings
-from g_recaptcha.validate_recaptcha import validate_captcha
-from .models import Music
 from django.views.decorators.cache import cache_page
 from django.utils.decorators import method_decorator
->>>>>>> 72a947ca0f031c1795a4c70e4eac47e9ce4d543a
 
 
 @method_decorator(cache_page(60 * 50), name='dispatch')
