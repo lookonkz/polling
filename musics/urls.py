@@ -1,12 +1,10 @@
 from django.urls import path
 from django.contrib.auth import views as auth_views
-from .views import MusicList, register
+from .views import MusicList, HomeViews
 
 app_name = 'musics'
 urlpatterns = [
-    path('', register, name='home'),
-    path('musics/', MusicList.as_view(), name='musics'),
-
+    path('', HomeViews.as_view(), name='home'),
 ]
 
 

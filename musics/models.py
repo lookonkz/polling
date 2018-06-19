@@ -5,7 +5,10 @@ from django.contrib.auth.models import User
 from django.contrib.contenttypes.fields import GenericRelation
 from .manager import LikeDislikeManager
 from django.utils import timezone
+from django.utils.functional import cached_property
 from easy_thumbnails.fields import ThumbnailerImageField
+from django.core.validators import FileExtensionValidator
+import os
 
 
 class LikeDislike(models.Model):
@@ -36,23 +39,64 @@ class LikeDislike(models.Model):
         return '{}'.format(self.user)
 
 
-# Create your models here.
-class Music(models.Model):
+class Category(models.Model):
+    name = models.CharField(verbose_name='название категории', default=None,  max_length=100, blank=True)
+    slug = models.SlugField(verbose_name='название ссылки категории', default=None, max_length=100, blank=True)
+    created_at = models.DateTimeField(verbose_name='дата создание', default=timezone.now, blank=True)
+    updated_at = models.DateTimeField(verbose_name='дата обнолвения', default=timezone.now, blank=True)
+    icon = models.CharField(verbose_name='иконка', max_length=13, null=True, default=None, blank=True)
+
+    class Meta:
+        verbose_name = 'Категория'
+        verbose_name_plural = 'Категории'
+        ordering = ['name']
+
+    def __str__(self):
+        return '{}'.format(self.name)
+
+    @cached_property
+    def music_trakss(self):
+        return self.musictrack_set.all()
+
+
+# Клипы
+class MusicClip(models.Model):
     name = models.CharField(verbose_name='Название песни', max_length=100)
     music = models.CharField(verbose_name='ссылка', max_length=300)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, verbose_name='Категория')
     votes = GenericRelation(LikeDislike, related_query_name='musics/photo', default=None, blank=True)
     article_date = models.DateTimeField('Дата публикации', auto_now_add=timezone.now, blank=True)
     reiting = models.IntegerField(verbose_name='количество голосов', default=0, blank=True)
     sorted_list = models.SmallIntegerField(verbose_name='порядок', db_index=True, default=1, blank=True)
 
     class Meta:
-        verbose_name = 'Музыка'
-        verbose_name_plural = 'Музыка'
+        verbose_name = 'Клип'
+        verbose_name_plural = 'Клипы'
         ordering = ['sorted_list']
 
     def __str__(self):
         return self.name
 
 
+def get_music_path(instance, filename):
+    return os.path.join('music/tracks/', "{}".format(instance.name), filename)
 
 
+# Музыка
+class MusicTrack(models.Model):
+    name = models.CharField(verbose_name='Название песни', max_length=100)
+    music = models.FileField(verbose_name='музыка', upload_to='music/tracks/', validators=[FileExtensionValidator(
+        allowed_extensions=['mp3'])])
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, verbose_name='Категория')
+    votes = GenericRelation(LikeDislike, related_query_name='musics/track', default=None, blank=True)
+    article_date = models.DateTimeField('Дата публикации', auto_now_add=timezone.now, blank=True)
+    reiting = models.IntegerField(verbose_name='количество голосов', default=0, blank=True)
+    sorted_list = models.SmallIntegerField(verbose_name='порядок', db_index=True, default=1, blank=True)
+
+    class Meta:
+        verbose_name = 'Музыка'
+        verbose_name_plural = 'Треки'
+        ordering = ['sorted_list']
+
+    def __str__(self):
+        return self.name

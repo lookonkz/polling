@@ -17,5 +17,8 @@ class LikeDislikeManager(models.Manager):
         # Забираем суммарный рейтинг
         return self.get_queryset().aggregate(Sum('vote')).get('vote__sum') or 0
 
-    def musics(self):
-        return self.get_queryset().filter(content_type__model='music').order_by('-musics__pub_date')
+    # def musics(self):
+    #     return self.get_queryset().filter(content_type__model='music').order_by('-musics__pub_date')
+
+    def musictrack(self):
+        return self.get_queryset().filter(content_type__model='musictrack').order_by('-musics__pub_date')

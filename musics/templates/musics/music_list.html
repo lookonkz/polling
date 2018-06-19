@@ -54,62 +54,7 @@ padding-bottom: 33px;">
     </div>
 
 
-{#   #}
-{#    {% for music in music_list %}#}
-{#        <div class="section  background-dark over-hide">#}
-{#            <div class="container">#}
-{#                <div class="row">#}
-{#                    <div class="clear"></div>#}
-{#                    <div class="col-lg-12 call-box-5 mt-lg-5 mt-xl-0"  style="text-align: center; padding: 0.6rem;" data-scroll-reveal="enter bottom move 40px over 0.8s after 0.2s">#}
-{#                        <h4 class="color-white">#{{ forloop.counter }}: {{ music.name }}</h4>#}
-{#                        <div class="video-section" style="max-width: 1200px;">#}
-{#                            <iframe class="youtube rounded-2 img-raised over-hide" width="560" height="315" src="https://www.youtube.com/embed/{{ music.music }}?rel=0&amp;showinfo=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>#}
-{#                        </div>#}
-{#                        <div class="col-lg-12 mt-4 mt-lg-0 mt-xl-4" data-scroll-reveal="enter bottom move 40px over 0.8s after 0.2s">#}
-{##}
-{#                            <button id="like" class="btn btn-primary btn-simple btn-round btn-block" type="button" data-id="{{ music.id }}" data-type="music" data-action="like">#}
-{#                                Дауыс беру#}
-{#                                - <span data-count="like">{{ music.votes.likes.count}}</span>#}
-{#                            </button>#}
-{#                        </div>#}
-{#                    </div>#}
-{#                </div>#}
-{#                <br>#}
-{#            </div>#}
-{#        </div>#}
-{#    {% endfor %}#}
 
-
-
-
-{##}
-{#        {% for music in music_list %}#}
-{#        <div class="section  background-dark over-hide">#}
-{#            <div class="container">#}
-{#                <div class="row">#}
-{#                    <div class="clear"></div>#}
-{#                    <div class="col-lg-12 call-box-5 mt-lg-5 mt-xl-0"  style="text-align: center; padding: 0.6rem;" data-scroll-reveal="enter bottom move 40px over 0.8s after 0.2s">#}
-{#                        <h4 class="color-white">#{{ forloop.counter }}: {{ music.name }}</h4>#}
-{#                        <div class="video-section" style="max-width: 1200px;">#}
-{#                            <figure class="youtube rounded-2 img-raised over-hide">#}
-{#                                <a href="https://www.youtube-nocookie.com/embed/{{ music.music }}">#}
-{#                                    <img src="{{ music.image|thumbnail_url:'avatar' }}" alt="image"  class="rounded-2 over-hide"/>#}
-{#                                </a>#}
-{#                            </figure>#}
-{#                        </div>#}
-{#                        <div class="col-lg-12 mt-4 mt-lg-0 mt-xl-4" data-scroll-reveal="enter bottom move 40px over 0.8s after 0.2s">#}
-{##}
-{#                            <button id="like" class="btn btn-primary btn-simple btn-round btn-block" type="button" data-id="{{ music.id }}" data-type="music" data-action="like">#}
-{#                                Дауыс беру#}
-{#                                - <span data-count="like">{{ music.votes.likes.count}}</span>#}
-{#                            </button>#}
-{#                        </div>#}
-{#                    </div>#}
-{#                </div>#}
-{#                <br>#}
-{#            </div>#}
-{#        </div>#}
-{#        {% endfor %}#}
     </div>
     <div class="section padding-top-bottom background-dark over-hide">
     </div>
@@ -186,16 +131,16 @@ padding-bottom: 33px;">
         $('[data-action="like"]').click(like);
     });
 </script>
-<script type="text/javascript">
-var count = 0;
-$('button')
-    .click(function() {
-        count ++  ;
-        if (count >= 7){
-            return window.location.href = '{% url 'account:logout' %}';
-        }
-});
-</script>
+{#<script type="text/javascript">#}
+{#var count = 0;#}
+{#$('button')#}
+{#    .click(function() {#}
+{#        count ++  ;#}
+{#        if (count >= 7){#}
+{#            return window.location.href = '{% url 'account:logout' %}';#}
+{#        }#}
+{#});#}
+{#</script>#}
  <script type="text/javascript" src="{% static 'js/custom/custom-elements.js' %}"></script>
 
 {#<script type="text/javascript" src="{% static 'js/custom/custom-op-corporate.js' %}"></script>#}

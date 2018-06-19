@@ -2,15 +2,12 @@ from django.shortcuts import render, redirect
 import json
 from django.views import View
 from django.contrib.contenttypes.models import ContentType
-from .models import LikeDislike, Music
+from .models import LikeDislike, MusicClip, Category
 from django.http import HttpResponse
 from django.views.generic.list import ListView
-from .forms import LoginForm, UserRegistrationForm
-from django.contrib.auth.models import User
-from django.contrib import auth
-from django.conf import settings
-from g_recaptcha.validate_recaptcha import validate_captcha
-from .models import Music
+from django.views.generic.base import TemplateView
+from .models import MusicTrack
+from django.http import JsonResponse
 
 
 class VotesView(View):
@@ -38,51 +35,26 @@ class VotesView(View):
         obj.reiting =int(obj.votes.likes().count())
         obj.save()
 
-        return HttpResponse(
-            json.dumps({
+        return JsonResponse({
                 "result": result,
                 "like_count": obj.votes.likes().count(),
-                "dislike_count": obj.votes.dislikes().count(),
-            }),
-            content_type="application/json"
-        )
+                # "dislike_count": obj.votes.dislikes().count(),
+            })
 
 
 class MusicList(ListView):
-    model = Music
+    model = MusicClip
     context_object_name = 'music_list'
     template_name = 'musics/music_list.html'
-    paginate_by = 7
-
-#
-# @validate_captcha
-# def register(request):
-#     GOOGLE_RECAPTCHA_SITE_KEY = settings.GOOGLE_RECAPTCHA_SITE_KEY
-#     if request.method == 'POST':
-#         form = LoginForm(request.POST)
-#         if form.is_valid():
-#             user = User.objects.create(username=form.cleaned_data['username'], password='dafadsfa$rRRR',
-#                                        email=form.cleaned_data['email'])
-#             user.save()
-#             auth.login(request, user)
-#             return redirect('musics/')
-#     else:
-#         form = LoginForm()
-#     return render(request, 'musics/register.html', {'form': form, 'context': GOOGLE_RECAPTCHA_SITE_KEY})
-#
+    paginate_by = 50
 
 
-@validate_captcha
-def register(request):
-    GOOGLE_RECAPTCHA_SITE_KEY = settings.GOOGLE_RECAPTCHA_SITE_KEY
-    if request.method == 'POST':
-        form = UserRegistrationForm(request.POST)
-        if form.is_valid():
-            user = User.objects.create(username=form.cleaned_data['username'], password='dafadsfa$rRRR',
-                                       email=form.cleaned_data['email'])
-            user.save()
-            auth.login(request, user)
-            return redirect('musics/')
-    else:
-        form = UserRegistrationForm()
-    return render(request, 'musics/register.html', {'form': form, 'context': GOOGLE_RECAPTCHA_SITE_KEY})
+class HomeViews(TemplateView):
+    template_name = 'musics/home.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['music_list'] = MusicClip.objects.all()[:10]
+        context['category_list'] = Category.objects.all().values('id', 'name')
+        context['category'] = Category.objects.all()
+        return context

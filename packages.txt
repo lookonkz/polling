@@ -1,19 +1,7 @@
- pip install django-registration
+pip install django-registration
 pip install pillow
-<<<<<<< HEAD
- pip install easy_thumbnails
-<<<<<<< HEAD
-=======
 pip install easy_thumbnails
 pip install django-g-recaptcha
-<<<<<<< HEAD
->>>>>>> 61906c6c931d1dcb26d977819e13e9611cbe1b3d
-=======
->>>>>>> e6dd39dbb071ca4b7d64bb024e02d8401fb8e59e
-<<<<<<< HEAD
-=======
 pip install djangorestframework
->>>>>>> parent of 9b4ecc9... adsfadsf
-=======
->>>>>>> 2f7c31f3538ca4e3523f5a92da6cec762b129208
->>>>>>> b009c15b495c94ee8c5b84ebf06d83b19d990ab4
+pip install django-allauth
+
