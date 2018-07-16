@@ -3605,8 +3605,9 @@ figure.vimeo a img, figure.youtube a img {
 	transition : all 0.3s ease-out;
 }
 .menu-fixed-padding {
-	padding-top: 40px;
-	padding-bottom: 40px;
+	/*padding-top: 40px;*/
+	/*padding-bottom: 40px;*/
+    background-color: black;
 	-webkit-transition : all 0.3s ease-out;
 	-moz-transition : all 0.3s ease-out;
 	-o-transition :all 0.3s ease-out;

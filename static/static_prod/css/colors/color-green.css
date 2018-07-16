@@ -260,3 +260,20 @@ figure.vimeo:hover a:after, figure.youtube:hover a:after {
 .font_size_nav{
 	font-size: 15px !important;
 }
+
+.hart-link{
+    color: #151515;
+}
+
+.fa-Facebook:before{
+    content:"\f09a"
+}
+
+.fa-Google:before{
+    content:"\f2b3"
+}
+
+.a-nav{
+    padding-left: 0px !important;
+    text-align: right !important;
+}
