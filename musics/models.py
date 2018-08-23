@@ -78,8 +78,8 @@ class MusicClip(models.Model):
         return self.name
 
 
-def get_music_path(instance, filename):
-    return os.path.join('music/tracks/', "{}".format(instance.name), filename)
+# def get_music_path(instance, filename):
+#     return os.path.join('music/tracks/', "{}".format(instance.name), filename)
 
 
 # Музыка
