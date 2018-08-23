@@ -69,7 +69,7 @@
                                             <div class="pt-2">
                                                 <div id="fap" class="row" style="border: 1px solid #DDE2E6 !important;">
                                                     <div class="col-8">
-                                                        <p class="pt-3">Ndsfsdf</p>
+                                                        <p class="pt-3">{{ music.name }}</p>
                                                     </div>
                                                     <div class="col-4">
                                                         <div class="pt-3 text-success" data-id="{{ music.id }}" data-type="musictrack" data-action="like" title="Нравится">Голос
@@ -78,9 +78,11 @@
                                                         </div>
 {#                                                        <p class="pt-3"><i data-id="{{ music.id }}" data-type="musictrack" data-action="like" class="fa fa-heart"></i><span data-count="like">{{ music.votes.likes.count }}</span></p>#}
                                                     </div>
-                                                    <audio preload="auto" controls>
-                                                        <source src="{{ music.music.url }}">
-                                                    </audio>
+{#                                                    <div id="wrapper">#}
+                                                        <audio preload="auto" controls>
+                                                            <source src="{{ music.music.url }}">
+                                                        </audio>
+{#                                                    </div>#}
                                                 </div>
                                             </div>
                                             {% endfor %}
