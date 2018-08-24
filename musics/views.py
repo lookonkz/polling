@@ -1,6 +1,6 @@
 from django.views import View
 from django.contrib.contenttypes.models import ContentType
-from .models import LikeDislike, MusicClip, Category
+from .models import LikeDislike, MusicClip, Category, MusicTrack
 from django.views.generic.list import ListView
 from django.views.generic.base import TemplateView
 from django.http import JsonResponse
@@ -53,7 +53,5 @@ class HomeViews(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['music_list'] = MusicClip.objects.all()[:10]
-        context['category_list'] = Category.objects.all().values('id', 'name')
-        context['category'] = Category.objects.all()
+        context['music_trakss'] = MusicTrack.objects.all()
         return context
