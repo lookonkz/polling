@@ -19,13 +19,18 @@ class VotesView(View):
         try:
             likedislike = LikeDislike.objects.get(content_type=ContentType.objects.get_for_model(obj), object_id=obj.id,
                                                   user=request.user)
+            c = MusicTrack.objects.get(id=likedislike.content_object)
 
             if likedislike.vote is not self.vote_type:
                 likedislike.vote = self.vote_type
                 likedislike.save(update_fields=['vote'])
                 result = True
+                c.reiting = int(c.reiting) + 1
+                c.save()
             else:
                 likedislike.delete()
+                c.reiting = int(c.reiting) - 1
+                c.save()
                 result = False
         except LikeDislike.DoesNotExist:
             obj.votes.create(user=request.user, vote=self.vote_type)
