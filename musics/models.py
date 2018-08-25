@@ -92,12 +92,12 @@ class MusicTrack(models.Model):
     article_date = models.DateTimeField('Дата публикации', auto_now_add=timezone.now, blank=True)
     reiting = models.IntegerField(verbose_name='количество голосов', default=0, blank=True)
     sorted_list = models.SmallIntegerField(verbose_name='порядок', db_index=True, default=1, blank=True)
-    image = models.ImageField(verbose_name='фото', upload_to='musics/track/img', null=True, default='/media/musics/track/img/logo1_icbvcAy.png' ,blank=True)
+    image = models.ImageField(verbose_name='фото', upload_to='musics/track/img', null=True, default='musics/track/img/logo1.png' ,blank=True)
 
     class Meta:
         verbose_name = 'Музыка'
         verbose_name_plural = 'Треки'
-        ordering = ['sorted_list']
+        ordering = ['reiting']
 
     def __str__(self):
         return self.name
