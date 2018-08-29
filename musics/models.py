@@ -86,7 +86,7 @@ class MusicClip(models.Model):
 class MusicTrack(models.Model):
     name = models.CharField(verbose_name='Название песни', max_length=100)
     music = models.FileField(verbose_name='музыка', upload_to='music/tracks/', validators=[FileExtensionValidator(
-        allowed_extensions=['mp3'])])
+        allowed_extensions=['mp3', 'wav'])])
     category = models.ForeignKey(Category, on_delete=models.CASCADE, verbose_name='Категория')
     votes = GenericRelation(LikeDislike, related_query_name='musics/track', default=None, blank=True)
     article_date = models.DateTimeField('Дата публикации', auto_now_add=timezone.now, blank=True)
