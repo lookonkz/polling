@@ -59,7 +59,7 @@
                             img_url="{{ music.image.url }}"
                             class="active list-group-item playlist-item">
                                 <div class="col-12 col-lg-6 col-md-6">
-                                   {{ music.name }}
+                                   {{ forloop.counter }} - {{ music.name }}
                                 </div>
 
                                 <div class="col-12 col-lg-4 col-md-4 right_list1 " data-id="{{ music.id }}" data-type="musictrack" data-action="like" title="Нравится">
