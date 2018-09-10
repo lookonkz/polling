@@ -56,7 +56,11 @@
                           <ul class="playlist list-group list-group-flush">
                             {% for music in music_trakss %}
                             <li audio_url="{{ music.music.url }}"
+                            {% if music.image.url|length == 0 %}
                             img_url="{{ music.image.url }}"
+                            {% else %}
+                            img_url="{% static 'logo1.png' %}"
+                            {% endif %}
                             class="active list-group-item playlist-item">
                                 <div class="col-12 col-lg-6 col-md-6">
                                    {{ forloop.counter }} - {{ music.name }}
