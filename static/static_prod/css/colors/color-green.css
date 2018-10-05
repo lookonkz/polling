@@ -277,3 +277,12 @@ figure.vimeo:hover a:after, figure.youtube:hover a:after {
     padding-left: 0px !important;
     text-align: right !important;
 }
+
+
+@media (max-width: 580px){
+
+    .big-height {
+        height: 46vh;
+    }
+
+}
