@@ -124,27 +124,12 @@
         }
         return cookieValue;
     }
-{#    $(function () {#}
-{#        $.ajaxSetup({#}
-{#            headers: { "X-CSRFToken": getCookie("csrftoken") }#}
-{#        });#}
-{#    });#}
 
-    function getCookie2(name) {
-        var cookieValue = null;
-        if (document.cookie && document.cookie !== '') {
-            var cookies = document.cookie.split(';');
-            for (var i = 0; i < cookies.length; i++) {
-                var cookie = jQuery.trim(cookies[i]);
-                // Does this cookie string begin with the name we want?
-                if (cookie.substring(0, name.length + 1) === (name + '=')) {
-                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                    break;
-                }
-            }
-        }
-        return cookieValue;
-    }
+    $(function () {
+        $.ajaxSetup({
+            headers: { "X-CSRFToken": getCookie("csrftoken") }
+        });
+    });
 
     function like() {
         var like = $(this);
@@ -156,7 +141,6 @@
         $.ajax({
             url : "/api/" + type + "/" + pk + "/" + action + "/",
             type : 'POST',
-            headers: { "X-CSRFToken": getCookie("csrftoken")},
             data : {'obj' : pk},
             success : function (json) {
                 like.find("[data-count='like']").text(json.like_count);
@@ -179,7 +163,6 @@
         $.ajax({
             url : "/api/" + type +"/" + pk + "/" + action + "/",
             type : 'POST',
-            headers: { "X-CSRFToken": getCookie2("csrftoken")},
             data : { 'obj' : pk },
 
             success : function (json) {
