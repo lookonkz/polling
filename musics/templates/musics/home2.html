@@ -149,9 +149,33 @@
     return false;
     }
 
+
+    function dislike()
+    {
+        var dislike = $(this);
+        var type = dislike.data('type');
+        var pk = dislike.data('id');
+        var action = dislike.data('action');
+        var like = dislike.prev();
+
+        $.ajax({
+            url : "/api/" + type +"/" + pk + "/" + action + "/",
+            type : 'POST',
+            data : { 'obj' : pk },
+
+            success : function (json) {
+                dislike.find("[data-count='dislike']").text(json.dislike_count);
+                like.find("[data-count='like']").text(json.like_count);
+            }
+        });
+
+        return false;
+    }
+
     // Подключение обработчиков
     $(function() {
         $('[data-action="like"]').click(like);
+        $('[data-action="dislike"]').click(dislike);
     });
 
 
