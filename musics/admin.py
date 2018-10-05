@@ -5,6 +5,7 @@ admin.site.register(LikeDislike)
 admin.site.register(MusicClip)
 admin.site.register(MusicTrack)
 
+
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('name',)}

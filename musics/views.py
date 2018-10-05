@@ -54,7 +54,7 @@ class MusicList(ListView):
 
 
 class HomeViews(TemplateView):
-    template_name = 'musics/home.html'
+    template_name = 'musics/home2.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

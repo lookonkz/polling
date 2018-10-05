@@ -1,0 +1,160 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load thumbnail %}
+{% block title %}
+
+{% endblock %}
+{% block content %}
+
+<!-- Hero Block
+	================================================== -->
+
+	<div class="section full-height">
+		<div class="parallax" style="background-image: url('{% static 'img/parallax-hero-3.jpg' %}')"></div>
+		<div class="grey-fade-over"></div>
+		<div class="hero-center-wrap move-bottom z-bigger">
+			<div class="container color-white hero-text big-text text-center parallax-fade-top">
+				<div class="row">
+					<div class="col-md-12 mg-auto">
+						<p style="margin-bottom: 0px">7 декабря в городе Алматы <br> В ледовомдворце «Алматы Арена» состоится 3-я ежегодная<br>
+                            Национальная премия</p>
+                        <div class="col-md-12 mg-auto">
+                            <img class="center" src="{% static 'NMA1.png' %}" alt="" style="text-align: center; width: 40%; padding-bottom: 0px">
+                        </div>
+                        <p>Концерт с участием звезд казахстанской и зарубежной эстрады</p>
+                        <a href="#scroll-top" class="btn btn-primary btn-round btn-long mt-5 scroll" >Купить билет</a>
+						<a href="#scroll-top" class="btn btn-flickr btn-round btn-long mt-5 scroll" >Проголосовать</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title" id="myModalLabel">Авторизация</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true"></span>
+            </button>
+          </div>
+          <div class="modal-body">
+             <h5>Пожалуйста авторизуйтесь, что бы проголосовать за любимого участника!</h5>
+          </div>
+          <div class="modal-footer">
+            {% load socialaccount %}
+            <a class="btn   btn-social-icon btn-vk" href="{% provider_login_url "vk" %}">
+                <span class="fa fa-vk"></span>
+            </a>
+            <a class="btn  btn-social-icon btn-facebook" href="{% provider_login_url "facebook" %}">
+                <span class="fa fa-facebook"></span>
+            </a>
+            <a class="btn  btn-social-icon btn-google" href="{% provider_login_url "google" %}">
+                <span class="fa fa-google"></span>
+            </a>
+            <a class="btn  btn-social-icon btn-twitter" href="{% provider_login_url "mailru" %}">
+                <span class="fa fa-mail-forward"></span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+	<div class="section padding-top-bottom background-grey" id="scroll-top">
+		<div class="container">
+			<div class="row justify-content-center">
+                {% for music in music_trakss %}
+                    <div class="col-12">
+                        <div class="row">
+                            <div class="col-12 col-md-1 text-center" style="font-size: 5rem; font-weight: 400;">
+                                {{ forloop.counter }}.
+                            </div>
+                            <div class="col-12 col-md-4">
+                                {% if music.image.url|length == 0 %}
+                                    <img src="{{ music.image.url }}" alt="" style="width: 100%; height: 200px">
+                                    {% else %}
+                                     <img src="{% static 'logo1.png' %}" alt="" style="width: 100%; height: 200px">
+                                {% endif %}
+                            </div>
+                            <div class="col-12 col-md-5 text-center pb-sm-5">
+                                <div class="row">
+                                    <div class="col-12"><h1 class="mt-md-4">{{ music.name }}</h1></div>
+                                    <div class="col-12 mt-1 text-center"><audio controls src="{{ music.music.url }}"></audio></div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-2 text-center pt-sm-5 pt-xl-5">
+                                {% if user.is_authenticated %}
+                                <button class="btn btn-flickr btn-round btn-long mt-md-5" data-id="{{ music.id }}" data-type="musictrack" data-action="like" title="Нравится">Проголосовать
+                                   <i class="fa fa-heart lents"></i>
+                                      <span data-count="like" style="font-size: 17px;">{{ music.votes.likes.count }}</span>
+                                  </button>
+                                {% else %}
+                                <button type="button" class="btn btn-primary btn-lg mt-md-5" data-toggle="modal" data-target="#myModal">
+                                  Проголосовать
+                                </button>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <hr>
+                    </div>
+                {% endfor %}
+
+            </div>
+        </div>
+    </div>
+
+
+
+{% endblock %}
+{% block script %}
+    <script>
+    function getCookie(name) {
+        var cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            var cookies = document.cookie.split(';');
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = jQuery.trim(cookies[i]);
+                // Does this cookie string begin with the name we want?
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+    $(function () {
+        $.ajaxSetup({
+            headers: { "X-CSRFToken": getCookie("csrftoken") }
+        });
+    });
+
+    function like() {
+        var like = $(this);
+        var type = like.data('type');
+        var pk = like.data('id');
+        var action = like.data('action');
+        var dislike = like.next();
+
+        $.ajax({
+            url : "/api/" + type + "/" + pk + "/" + action + "/",
+            type : 'POST',
+            data : {'obj' : pk},
+            success : function (json) {
+                like.find("[data-count='like']").text(json.like_count);
+            }
+    });
+
+    return false;
+    }
+
+    // Подключение обработчиков
+    $(function() {
+        $('[data-action="like"]').click(like);
+    });
+
+
+
+</script>
+{% endblock %}
