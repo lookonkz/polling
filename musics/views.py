@@ -60,3 +60,13 @@ class HomeViews(TemplateView):
         context = super().get_context_data(**kwargs)
         context['music_trakss'] = MusicTrack.objects.all()
         return context
+
+
+
+class HomeViews1(TemplateView):
+    template_name = 'musics/home3.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['music_trakss'] = MusicTrack.objects.all()
+        return context
