@@ -22,7 +22,7 @@
                             <img class="center" src="{% static 'NMA1.png' %}" alt="" style="text-align: center; width: 40%; padding-bottom: 0px">
                         </div>
                         <p>Концерт с участием звезд казахстанской и зарубежной эстрады</p>
-                        <a href="#scroll-top" class="btn btn-primary btn-round btn-long mt-5 scroll" >Купить билет</a>
+                        <a href="https://ticketon.kz/event/zhyl-tandauy-2018" class="btn btn-primary btn-round btn-long mt-5 scroll" >Купить билет</a>
 						<a href="#scroll-top" class="btn btn-flickr btn-round btn-long mt-5 scroll" >Проголосовать</a>
 					</div>
 				</div>
@@ -89,6 +89,8 @@
                                 {% else %}
                                 <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal">
                                   Проголосовать
+                                    <i class="fa fa-heart lents"></i>
+                                    <span data-count="like" style="font-size: 17px;">{{ music.votes.likes.count }}</span>
                                 </button>
                                 {% endif %}
                             </div>
@@ -142,7 +144,7 @@
 
 {#    $(function () {#}
 {#        $.ajaxSetup({#}
-{#            headers: { "X-CSRFToken": getCookie("csrftoken") }#}
+{#            #}
 {#        });#}
 {#    });#}
 

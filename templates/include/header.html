@@ -18,7 +18,7 @@
                                 <a class="nav-link text-success">Вы вошли как: {{ user.username }}</a>
                             </li>
                             <li class="nav-item mega-menu">
-                                <form method="post" action="/accounts/logout/">
+                                <form method="post" action="{% url 'ajax:account_logout' %}">
                                   {% csrf_token %}
                                   <button class="btn btn-primary btn-simple btn-sm btn-round" type="submit">Выйти <i class="funky-ui-icon icon-Right"></i></button>
                                 </form>
