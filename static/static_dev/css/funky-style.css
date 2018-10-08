@@ -8417,8 +8417,8 @@ ul.countdown li.seperator {
 
 @media (max-width: 490px){
      .img-sm-lx{
-         width: 160px;
-         height: 100px;
+         width: 70px;
+         height: 70px;
      }
 
     .full-height {
@@ -8444,6 +8444,13 @@ ul.countdown li.seperator {
          width: 70px;
          height: 70px;
      }
+
+    .hero-text.big-text p {
+        letter-spacing: 1px;
+        font-size: 24px;
+        font-weight: 0;
+        color: #fff;
+    }
 
 }
 
