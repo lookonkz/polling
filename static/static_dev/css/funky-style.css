@@ -8434,7 +8434,7 @@ ul.countdown li.seperator {
     }
 
     .full-height {
-        height: calc(100vh - 68px);
+        height: calc(110vh - 68px);
     }
 }
 
