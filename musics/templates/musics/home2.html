@@ -71,7 +71,7 @@
                                 {{ forloop.counter }}.
                             </div>
                             <div class="col-2 col-md-12 col-lg-1 text-center">
-                                {% if music.image.url|length == 0 %}
+                                {% if music.image.url|length != 0 %}
                                     <img src="{{ music.image.url }}" alt="" class="img-sm-lx">
                                     {% else %}
                                      <img src="{% static 'logo1.png' %}" alt="" class="img-sm-lx">
