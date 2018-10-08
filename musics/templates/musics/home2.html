@@ -67,30 +67,27 @@
                 {% for music in music_trakss %}
                     <div class="col-12 col-md-12">
                         <div class="row">
-                            <div class="col-12 col-md-12 col-lg-1 text-center" style="font-size: 5rem; font-weight: 400;">
+                            <div class="col-12  col-md-12 col-lg-1 text-center" style="font-size: 3rem; font-weight: 200;">
                                 {{ forloop.counter }}.
                             </div>
-                            <div class="col-12 col-md-12 col-lg-4">
+                            <div class="col-12 col-md-12 col-lg-1 text-center">
                                 {% if music.image.url|length == 0 %}
-                                    <img src="{{ music.image.url }}" alt="" style="width: 100%; height: 200px">
+                                    <img src="{{ music.image.url }}" alt="" class="img-sm-lx">
                                     {% else %}
-                                     <img src="{% static 'logo1.png' %}" alt="" style="width: 100%; height: 200px">
+                                     <img src="{% static 'logo1.png' %}" alt="" class="img-sm-lx">
                                 {% endif %}
                             </div>
-                            <div class="col-12 col-md-8 col-lg-5 text-center pb-sm-5">
-                                <div class="row">
-                                    <div class="col-12"><h1 class="mt-md-4">{{ music.name }}</h1></div>
-                                    <div class="col-12 mt-1 text-center"><audio controls src="{{ music.music.url }}"></audio></div>
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-4 col-lg-2 text-center pt-sm-5 pt-xl-5">
+                            <div class="col-12 col-md-12 mt-1 col-lg-3 text-center"><h5 class="mt-md-2">{{ music.name }}</h5></div>
+                            <div class="col-12 col-md-8 col-lg-5 text-center"><audio controls src="{{ music.music.url }}"></audio></div>
+
+                            <div class="col-12 col-md-4 col-lg-2 text-center pt-xl-2 pt-md-2">
                                 {% if user.is_authenticated %}
-                                <button class="btn btn-flickr btn-round btn-long mt-md-5" data-id="{{ music.id }}" data-type="musictrack" data-action="like dislike" title="Нравится">Проголосовать
+                                <button class="btn btn-flickr btn-round btn-sm " data-id="{{ music.id }}" data-type="musictrack" data-action="like dislike" title="Нравится">Проголосовать
                                    <i class="fa fa-heart lents"></i>
                                       <span data-count="like" style="font-size: 17px;">{{ music.votes.likes.count }}</span>
                                   </button>
                                 {% else %}
-                                <button type="button" class="btn btn-primary btn-lg mt-md-5" data-toggle="modal" data-target="#myModal">
+                                <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal">
                                   Проголосовать
                                 </button>
                                 {% endif %}
