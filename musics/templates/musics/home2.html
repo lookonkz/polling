@@ -85,7 +85,7 @@
                             </div>
                             <div class="col-12 col-md-4 col-lg-2 text-center pt-sm-5 pt-xl-5">
                                 {% if user.is_authenticated %}
-                                <button class="btn btn-flickr btn-round btn-long mt-md-5" data-id="{{ music.id }}" data-type="musictrack" data-action="like" title="Нравится">Проголосовать
+                                <button class="btn btn-flickr btn-round btn-long mt-md-5" data-id="{{ music.id }}" data-type="musictrack" data-action="like dislike" title="Нравится">Проголосовать
                                    <i class="fa fa-heart lents"></i>
                                       <span data-count="like" style="font-size: 17px;">{{ music.votes.likes.count }}</span>
                                   </button>
