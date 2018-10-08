@@ -26,7 +26,7 @@ handler500 = curry(server_error, template_name='errs/500.html')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('accounts/', include('allauth.urls',)),
+    path('accounts/', include('allauth.urls')),
     path('', include('musics.urls', namespace='home')),
     path('api/', include('ajax.urls', namespace='ajax')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
