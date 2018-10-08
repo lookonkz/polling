@@ -16,7 +16,7 @@
 			<div class="container color-white hero-text big-text text-center parallax-fade-top">
 				<div class="row">
 					<div class="col-md-12 mg-auto">
-						<p style="margin-bottom: 0px">7 декабря в городе Алматы <br> В ледовомдворце «Алматы Арена» состоится 3-я ежегодная<br>
+						<p style="margin-bottom: 0px">7 декабря в городе Алматы <br> В ледовом дворце «Алматы Арена» состоится 3-я ежегодная<br>
                             Национальная премия</p>
                         <div class="col-md-12 mg-auto">
                             <img class="center" src="{% static 'NMA1.png' %}" alt="" style="text-align: center; width: 40%; padding-bottom: 0px">
@@ -90,7 +90,7 @@
                                 <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal">
                                   Проголосовать
                                     <i class="fa fa-heart lents"></i>
-                                    <span data-count="like" style="font-size: 17px;">{{ music.votes.likes.count }}</span>
+                                    <span>{{ music.votes.likes.count }}</span>
                                 </button>
                                 {% endif %}
                             </div>
