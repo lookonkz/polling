@@ -4203,11 +4203,11 @@ figure.vimeo a img, figure.youtube a img {
 		line-height: 30px;
 		font-size: 13px;
 	}
-	#menu-wrap{
-		position: relative;
-		top:auto;
-		left:auto;
-	}
+	/*#menu-wrap{*/
+		/*position: relative;*/
+		/*top:auto;*/
+		/*left:auto;*/
+	/*}*/
 	#menu-wrap .navbar-brand img,
 	#menu-wrap.cbp-af-header.cbp-af-header-shrink .navbar-brand img{
 		max-height: 20px;
@@ -7998,7 +7998,7 @@ h6, .h6 {
 	margin-top: 0;
 }
 .full-height {
-	height:calc(100vh - 68px);
+	height:calc(60vh - 68px);
 }
 .padding-top-1st {
 	padding-top:120px;
@@ -8492,6 +8492,7 @@ ul.countdown li.seperator {
 
 .container {
   min-width: 1200px !important;
+  max-width: none !important;
 }
 .img-sm-lx{
          width: 70px;
@@ -8555,3 +8556,6 @@ ul.countdown li.seperator {
         height: 600px;
     }
 }
+
+
+
