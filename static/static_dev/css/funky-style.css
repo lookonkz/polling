@@ -8415,32 +8415,85 @@ ul.countdown li.seperator {
     }
 }
 
-@media (max-width: 490px){
-     .img-sm-lx{
-         width: 40px;
-         height: 40px;
-     }
+/*@media (max-width: 490px){*/
+     /*.img-sm-lx{*/
+         /*width: 40px;*/
+         /*height: 40px;*/
+     /*}*/
 
-    .full-height {
-        height: calc(69vh - 68px);
-    }
+     /*.img-col-12{*/
+        /*text-align: center !important;*/
+        /*width: 100% !important;*/
+        /*padding-bottom: 0px !important;*/
+     /*}*/
+
+    /*.full-height {*/
+        /*height: calc(69vh - 68px);*/
+    /*}*/
+
+    /*.counter-flo{*/
+        /*font-size: 2rem !important;*/
+        /*font-weight: 200 !important;*/
+    /*}*/
+/*}*/
+
+/*@media (min-width: 768px){*/
+    /*.img-sm-lx{*/
+         /*width: 50px;*/
+         /*height: 50px;*/
+
+    /*}*/
+
+    /*.counter-flo{*/
+        /*font-size: 3rem !important;*/
+        /*font-weight: 200 !important;*/
+    /*}*/
+
+    /*.full-height {*/
+        /*height: calc(110vh - 68px);*/
+    /*}*/
+
+    /*.img-col-12{*/
+        /*text-align: center !important;*/
+        /*width: 50% !important;*/
+        /*padding-bottom: 0px !important;*/
+    /*}*/
+
+
+/*}*/
+
+
+/*@media (min-width: 992px){*/
+     /*.img-sm-lx{*/
+         /*width: 70px;*/
+         /*height: 70px;*/
+     /*}*/
+
+    /*.hero-text.big-text p {*/
+        /*letter-spacing: 1px;*/
+        /*font-size: 24px;*/
+        /*font-weight: 0;*/
+        /*color: #fff;*/
+    /*}*/
+
+    /*.counter-flo{*/
+        /*font-size: 3rem;*/
+        /*font-weight: 200;*/
+    /*}*/
+
+    /*.img-col-12{*/
+        /*text-align: center !important;*/
+        /*width: 50% !important;*/
+        /*padding-bottom: 0px!important;*/
+    /*}*/
+
+/*}*/
+
+
+.container {
+  min-width: 1200px !important;
 }
-
-@media (min-width: 768px){
-    .img-sm-lx{
-         width: 50px;
-         height: 50px;
-
-    }
-
-    .full-height {
-        height: calc(110vh - 68px);
-    }
-}
-
-
-@media (min-width: 992px){
-     .img-sm-lx{
+.img-sm-lx{
          width: 70px;
          height: 70px;
      }
@@ -8452,9 +8505,16 @@ ul.countdown li.seperator {
         color: #fff;
     }
 
-}
+    .counter-flo{
+        font-size: 3rem;
+        font-weight: 200;
+    }
 
-
+    .img-col-12{
+        text-align: center !important;
+        width: 50% !important;
+        padding-bottom: 0px!important;
+    }
 
 /* #Primary
 ================================================== */
