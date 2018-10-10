@@ -58,11 +58,14 @@ class HomeViews(ListView):
     model = MusicTrack
     template_name = 'musics/home2.html'
     context_object_name = 'music_trakss'
-    paginate_by = 50
+    paginate_by = 25
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['number'] = MusicTrack.objects.all().first()
+        if self.request.GET.get('page'):
+            if int(self.request.GET.get('page')) > 1:
+                page = 25 * int(self.request.GET.get('page')) - 25 + 1
+                context['countpage'] = page
         return context
 
 
