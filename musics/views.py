@@ -19,7 +19,7 @@ class VotesView(View):
         try:
             likedislike = LikeDislike.objects.get(content_type=ContentType.objects.get_for_model(obj), object_id=obj.id,
                                                   user=request.user)
-            c = MusicTrack.objects.get(id=likedislike.content_object)
+            c = MusicTrack.objects.get(id=likedislike.content_object.id)
 
             if likedislike.vote is not self.vote_type:
                 likedislike.vote = self.vote_type
@@ -42,7 +42,7 @@ class VotesView(View):
         return JsonResponse({
                 "result": result,
                 "like_count": obj.votes.likes().count(),
-                # "dislike_count": obj.votes.dislikes().count(),
+                "dislike_count": obj.votes.dislikes().count(),
             })
 
 
