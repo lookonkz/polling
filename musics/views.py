@@ -60,10 +60,10 @@ class HomeViews(ListView):
     context_object_name = 'music_trakss'
     paginate_by = 50
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['music_trakss'] = MusicTrack.objects.all().order_by('name')
-        return context
+    # def get_context_data(self, **kwargs):
+    #     context = super().get_context_data(**kwargs)
+    #     context['music_trakss'] = MusicTrack.objects.all().order_by('name')
+    #     return context
 
 
 class HomeViews1(TemplateView):
