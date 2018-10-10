@@ -47,11 +47,11 @@ class VotesView(View):
             })
 
 
-class MusicList(ListView):
-    model = MusicClip
-    context_object_name = 'music_list'
-    template_name = 'musics/music_list.html'
-    paginate_by = 50
+# class MusicList(ListView):
+#     model = MusicClip
+#     context_object_name = 'music_list'
+#     template_name = 'musics/music_list.html'
+#     paginate_by = 50
 
 
 class HomeViews(ListView):
