@@ -68,7 +68,7 @@
                     <div class="col-12">
                         <div class="row">
                             <div class="col-1 text-center counter-flo">
-                                {{ 1 |add:forloop.counter0 }}.
+                                {{ forloop.counter0|add:page_obj.start_index }}
                             </div>
                             <div class="col-1 text-center">
                                 {% if music.image.url|length != 0 %}
