@@ -61,7 +61,7 @@ class HomeViews(ListView):
     paginate_by = 25
 
     def get_queryset(self):
-        qs = self.model.objects.all().order_by('-reiting').distinct('name')
+        qs = self.model.objects.all().order_by('-reiting').distinct()
         return qs
 
     def get_context_data(self, **kwargs):
