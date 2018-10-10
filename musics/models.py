@@ -97,7 +97,7 @@ class MusicTrack(models.Model):
     class Meta:
         verbose_name = 'Музыка'
         verbose_name_plural = 'Треки'
-        ordering = ['-reiting']
+        ordering = ['name']
 
     def __str__(self):
         return self.name
