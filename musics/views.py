@@ -1,11 +1,12 @@
 from django.views import View
 from django.contrib.contenttypes.models import ContentType
 from .models import LikeDislike, MusicClip, Category, MusicTrack
-from django.views.generic.list import ListView
-from django.views.generic.base import TemplateView
+from django.views.generic import TemplateView, ListView
 from django.http import JsonResponse
 from django.views.decorators.cache import cache_page
 from django.utils.decorators import method_decorator
+
+
 
 
 @method_decorator(cache_page(60 * 50), name='dispatch')
@@ -53,14 +54,16 @@ class MusicList(ListView):
     paginate_by = 50
 
 
-class HomeViews(TemplateView):
+class HomeViews(ListView):
+    model = MusicTrack
     template_name = 'musics/home2.html'
+    context_object_name = 'music_trakss'
+    paginate_by = 50
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['music_trakss'] = MusicTrack.objects.all().order_by('name')
         return context
-
 
 
 class HomeViews1(TemplateView):
