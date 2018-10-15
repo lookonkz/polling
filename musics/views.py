@@ -5,8 +5,8 @@ from django.views.generic import TemplateView, ListView
 from django.http import JsonResponse
 from django.views.decorators.cache import cache_page
 from django.utils.decorators import method_decorator
-from django_filters.views import FilterView
-from .filters import MusicTrackFilter
+# from django_filters.views import FilterView
+# from .filters import MusicTrackFilter
 
 
 @method_decorator(cache_page(60 * 50), name='dispatch')
