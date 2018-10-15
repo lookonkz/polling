@@ -5,8 +5,8 @@ from django.views.generic import TemplateView, ListView
 from django.http import JsonResponse
 from django.views.decorators.cache import cache_page
 from django.utils.decorators import method_decorator
-
-
+from django_filters.views import FilterView
+from .filters import MusicTrackFilter
 
 
 @method_decorator(cache_page(60 * 50), name='dispatch')
@@ -55,10 +55,11 @@ class MusicList(ListView):
 
 
 class HomeViews(ListView):
-    model = MusicTrack
     template_name = 'musics/home2.html'
+    model = MusicTrack
     context_object_name = 'music_trakss'
     paginate_by = 25
+    # filterset_class = MusicTrackFilter
 
     def get_queryset(self):
         qs = self.model.objects.all().order_by('-reiting', 'id').distinct()
