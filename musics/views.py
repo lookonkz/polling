@@ -61,6 +61,10 @@ class HomeViews(ListView):
     paginate_by = 25
     # filterset_class = MusicTrackFilter
 
+    def get_queryset(self):
+        qs = self.model.objects.all().order_by('-reiting', 'id').distinct()
+        return qs
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         if self.request.GET.get('page'):
