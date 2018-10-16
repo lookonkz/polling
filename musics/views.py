@@ -28,6 +28,12 @@ class VotesView(View):
                 result = True
                 c.reiting = int(c.reiting) + 1
                 c.save()
+            elif likedislike.vote is self.vote_type:
+                likedislike.vote = self.vote_type
+                likedislike.save(update_fields=['vote'])
+                result = True
+                c.reiting = int(c.reiting) - 1
+                c.save()
             else:
                 likedislike.delete()
                 c.reiting = int(c.reiting) - 1
