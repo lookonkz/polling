@@ -19,5 +19,5 @@ class CategoryAdmin(admin.ModelAdmin):
 
 @admin.register(MusicTrack)
 class CategoryAdmin(admin.ModelAdmin):
-    list_display = ("name", "reiting")
-
+    list_display = ("id", "name", "reiting")
+    search_fields = ["id"]
