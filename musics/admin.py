@@ -12,9 +12,9 @@ class CategoryAdmin(admin.ModelAdmin):
 
 @admin.register(LikeDislike)
 class CategoryAdmin(admin.ModelAdmin):
-    list_display = ("user", "content_type", "object_id", "vote")
+    list_display = ("user", "object_id")
     search_fields = ["user"]
-    list_filter = ("user", "content_type", 'object_id', 'vote')
+    list_filter = ("user", 'object_id')
 
 
 @admin.register(MusicTrack)
