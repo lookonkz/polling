@@ -22,18 +22,21 @@ class VotesView(View):
                                                   user=request.user)
             c = MusicTrack.objects.get(id=likedislike.content_object.id)
 
+            for i in LikeDislike.objects.all().filter(object_id=180):
+                i.delete()
+
             if likedislike.vote is not self.vote_type:
                 likedislike.vote = self.vote_type
                 likedislike.save(update_fields=['vote'])
                 result = True
                 c.reiting = int(c.reiting) + 1
                 c.save()
-            elif likedislike.vote is self.vote_type:
-                likedislike.vote = self.vote_type
-                likedislike.save(update_fields=['vote'])
-                result = True
-                c.reiting = int(c.reiting) - 1
-                c.save()
+            # elif likedislike.vote is self.vote_type:
+            #     likedislike.vote = self.vote_type
+            #     likedislike.save(update_fields=['vote'])
+            #     result = True
+            #     c.reiting = int(c.reiting) - 1
+            #     c.save()
             else:
                 likedislike.delete()
                 c.reiting = int(c.reiting) - 1

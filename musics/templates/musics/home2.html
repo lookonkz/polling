@@ -92,7 +92,7 @@
                                 {% if user.is_authenticated %}
                                 <button class="btn btn-flickr btn-round btn-sm " data-id="{{ music.id }}" data-type="musictrack" data-action="like" title="Нравится">Проголосовать
                                    <i class="fa fa-heart lents"></i>
-                                      <span data-count="like" style="font-size: 17px;">{{ music.votes.likes.count }}</span>
+                                      <span data-count="like" style="font-size: 17px;">{{ music.reiting }}</span>
                                   </button>
                                 {% else %}
                                 <button type="button" class="btn btn-primary btn-round btn-sm" data-toggle="modal" data-target="#myModal">
