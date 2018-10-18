@@ -14,6 +14,7 @@ class CategoryAdmin(admin.ModelAdmin):
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ("user", "object_id")
     list_filter = ("user", 'object_id')
+    search_fields = ["object_id"]
 
 
 @admin.register(MusicTrack)
