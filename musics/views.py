@@ -20,22 +20,21 @@ class VotesView(View):
         try:
             likedislike = LikeDislike.objects.get(content_type=ContentType.objects.get_for_model(obj), object_id=obj.id,
                                                   user=request.user)
+            c = MusicTrack.objects.get(id=likedislike.content_object.id)
+
+            for i in LikeDislike.objects.all().filter(object_id=180):
+                i.delete()
+
             if likedislike.vote is not self.vote_type:
                 likedislike.vote = self.vote_type
                 likedislike.save(update_fields=['vote'])
                 result = True
-                obj.reiting = int(obj.reiting) + 1
-                obj.save()
-            # elif likedislike.vote is self.vote_type:
-            #     likedislike.vote = self.vote_type
-            #     likedislike.save(update_fields=['vote'])
-            #     result = True
-            #     c.reiting = int(c.reiting) - 1
-            #     c.save()
+                c.reiting = int(c.reiting) + 1
+                c.save()
             else:
                 likedislike.delete()
-                obj.reiting = int(obj.reiting) - 1
-                obj.save()
+                c.reiting = int(c.reiting) - 1
+                c.save()
                 result = False
         except LikeDislike.DoesNotExist:
             obj.votes.create(user=request.user, vote=self.vote_type)
@@ -43,8 +42,8 @@ class VotesView(View):
 
         return JsonResponse({
                 "result": result,
-                "like_count": obj.reiting,
-                "dislike_count": obj.reiting,
+                "like_count": obj.votes.likes().count(),
+                "dislike_count": obj.votes.dislikes().count(),
             })
 
 
