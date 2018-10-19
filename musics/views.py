@@ -41,9 +41,6 @@ class VotesView(View):
             obj.votes.create(user=request.user, vote=self.vote_type)
             result = True
 
-        obj.reiting =int(obj.votes.likes().count())
-        obj.save()
-
         return JsonResponse({
                 "result": result,
                 "like_count": obj.reiting,
