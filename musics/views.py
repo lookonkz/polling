@@ -37,7 +37,7 @@ class VotesView(View):
 
         return JsonResponse({
                 "result": result,
-                "like_count": obj.votes.likes().count(),
+                "like_count": obj.reiting,
                 "dislike_count": obj.votes.dislikes().count(),
             })
 
