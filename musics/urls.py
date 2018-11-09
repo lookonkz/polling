@@ -1,11 +1,11 @@
 from django.urls import path
-from django.contrib.auth import views as auth_views
-from .views import MusicList, HomeViews, HomeViews1
+from .views import HomeViews, HomeViews1, TrackDetailView
 
 app_name = 'musics'
 urlpatterns = [
     path('', HomeViews.as_view(), name='home'),
     path('link/', HomeViews1.as_view(), name='home3'),
+    path('music/<int:pk>/', TrackDetailView.as_view(), name='track')
 ]
 
 

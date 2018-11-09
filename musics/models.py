@@ -8,6 +8,7 @@ from django.utils import timezone
 from django.utils.functional import cached_property
 from easy_thumbnails.fields import ThumbnailerImageField
 from django.core.validators import FileExtensionValidator
+from django.urls import reverse
 import os
 
 
@@ -92,7 +93,8 @@ class MusicTrack(models.Model):
     article_date = models.DateTimeField('Дата публикации', auto_now_add=timezone.now, blank=True)
     reiting = models.IntegerField(verbose_name='количество голосов', default=0, blank=True)
     sorted_list = models.SmallIntegerField(verbose_name='порядок', db_index=True, default=1, blank=True)
-    image = ThumbnailerImageField(verbose_name='фото', upload_to='musics/track/img', null=True, default='musics/track/img/logo1.png' , blank=True)
+    image = ThumbnailerImageField(verbose_name='фото', upload_to='musics/track/img', null=True,
+                                  default='musics/track/img/logo1.png' , blank=True)
 
     class Meta:
         verbose_name = 'Музыка'
@@ -101,3 +103,6 @@ class MusicTrack(models.Model):
 
     def __str__(self):
         return self.name
+
+    def get_absolute_url(self):
+        return reverse('musics:track', kwargs={'pk':self.pk})
