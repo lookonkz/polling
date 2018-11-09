@@ -19,6 +19,15 @@ from django.conf.urls.static import static
 from django.conf import settings
 from django.utils.functional import curry
 from django.views.defaults import server_error, page_not_found
+from django.contrib.sitemaps import views as sitemap_views
+from django.contrib.sitemaps.views import sitemap
+from musics.sitemaps import MusicTrackSitemap
+from django.views.decorators.cache import cache_page
+
+
+sitemaps = {
+    'musics': MusicTrackSitemap
+}
 
 
 handler404 = curry(page_not_found, template_name='errs/404.html')
@@ -27,8 +36,10 @@ handler500 = curry(server_error, template_name='errs/500.html')
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')),
-    path('', include('musics.urls', namespace='home')),
+    path('', include('musics.urls', namespace='musics')),
     path('api/', include('ajax.urls', namespace='ajax')),
+    path('sitemap.xml', cache_page(86400)(sitemap_views.sitemap), {'sitemaps': sitemaps},
+        name='django.contrib.sitemaps.views.sitemap'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 if settings.DEBUG:

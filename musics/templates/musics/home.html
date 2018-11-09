@@ -2,136 +2,149 @@
 {% load static %}
 {% load thumbnail %}
 {% block title %}
-
 {% endblock %}
+{% block meta %}
+1 декабря в городе Алматы в ледовом дворце «Алматы Арена» состоится третий ежегодный шоу-концерт «Jyl Tandayy» - ұлттық музыкалық жүлде»
+{% endblock %}
+{% block keywords %}
+    Алматы, концерт, алматы арена, ninety one, кайрат нуртас, dan balan, музыка, казахстан, q pop, aikyn, премия, Jyl tanday, жыл тандауы
+{% endblock %}
+
 {% block content %}
-<!-- Primary Page Layout
+
+<!-- Hero Block
 	================================================== -->
 
-	<!-- Hero Slider Block
-	================================================== -->
-
-	<div class="section big-height">
+	<div class="section full-height">
 		<div class="parallax" style="background-image: url('{% static 'img/parallax-hero-3.jpg' %}')"></div>
-        <div class="hero-center-wrap move-bottom z-bigger">
-			<div class="container color-white hero-text big-text text-center parallax-fade-top" style="top: 0px; opacity: 1;">
+		<div class="grey-fade-over"></div>
+		<div class="hero-center-wrap move-bottom z-bigger">
+			<div class="container color-white hero-text big-text text-center parallax-fade-top">
 				<div class="row">
-					<div class="col-md-12 mg-auto">
-{#						<h1 class="color-white mb-xl-5 center">Жыл тандауы</h1>#}
-                        <img class="center" src="{% static 'NMA.png' %}" alt="" style="text-align: center; width: 100%">
+					<div class="col-xl-12 mg-auto">
+						<p style="margin-bottom: 0px">1 декабря в городе Алматы <br> В ледовом дворце «Алматы Арена» состоится 3-я ежегодная<br>
+                            Национальная премия</p>
+                        <div class="col-12 mg-auto">
+                            <img class="center img-col-12" src="{% static 'NMA1.png' %}" alt="">
+                        </div>
+                        <p>Концерт с участием звезд казахстанской и зарубежной эстрады</p>
+                        <a href="https://ticketon.kz/event/zhyl-tandauy-2018" class="btn btn-primary btn-round btn-long scroll" >Купить билет</a>
+						<a href="#scroll-top" class="btn btn-flickr btn-round btn-long scroll" >Проголосовать</a>
 					</div>
+                    <div class="col-12 mg-auto">
+                        <p class="pt-2">Наши партнеры</p>
+                        <img src="{% static 'logos4.png' %}" alt="" style="width: 70%; padding-bottom: 0px">
+                    </div>
 				</div>
 			</div>
 		</div>
+	</div>
+
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title" id="myModalLabel">Авторизация</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true"></span>
+            </button>
+          </div>
+          <div class="modal-body">
+             <h5>Пожалуйста авторизуйтесь, что бы проголосовать за любимого участника!</h5>
+          </div>
+          <div class="modal-footer">
+            {% load socialaccount %}
+            <a class="btn   btn-social-icon btn-vk" href="{% provider_login_url "vk" %}">
+                <span class="fa fa-vk"></span>
+            </a>
+            <a class="btn  btn-social-icon btn-facebook" href="{% provider_login_url "facebook" %}">
+                <span class="fa fa-facebook"></span>
+            </a>
+            <a class="btn  btn-social-icon btn-google" href="{% provider_login_url "google" %}">
+                <span class="fa fa-google"></span>
+            </a>
+{#            <a class="btn  btn-social-icon btn-twitter" href="{% provider_login_url "mailru" %}">#}
+{#                <span class="fa fa-mail-forward"></span>#}
+{#            </a>#}
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="section padding-top-bottom background-white over-hide" id="scroll-top">
-        <div class="container z-bigger">
-            <div class="row justify-content-center">
-                <div class="col-md-8">
-                    <div class="main-title text-center">
-                        <h3>Проголосуйте за любимого участника</h3>
-                    </div>
-                </div>
-                <div class="clear"></div>
-                <div class="col-lg-8">
 
-                    <section class="audio-player">
-                        <div class="">
-                          <div class="card-body">
-                            <div class="row align-items-center mt-4 mb-3 mx-0">
-                              <i id="play-button"class="large material-icons play-pause text-primary mr-2" aria-hidden="true">play_circle_outline</i>
-                              <i id="pause-button"class="large material-icons play-pause d-none text-primary mr-2" aria-hidden="true">pause_circle_outline</i>
-                              <i id="next-button"class="large material-icons text-primary ml-2 mr-3" aria-hidden="true">skip_next</i>
-                              <div class="col ml-auto rounded-circle  pl-5">
-                                <img id="thumbnail" class="img-fluid rounded-circle" src="{% static 'img/logo.png' %}" alt="">
-                              </div>
+	<div class="section padding-top-bottom background-grey" id="scroll-top">
+		<div class="container">
+			<div class="row justify-content-center">
+                {% for music in music_trakss %}
+                    <div class="col-12">
+                        <div class="row">
+                            <div class="col-1 text-center counter-flo">
+                                {% if countpage %}
+                                {{ countpage|add:forloop.counter0 }}
+                                {% else %}
+                                     {{ forloop.counter }}
+                                {% endif %}
                             </div>
-                            <div class="p-0 m-0" id="now-playing">
-                              <p class="font-italic mb-0 pl-3">Сейчас играет: </p>
-                              <div class="row lead pl-3" id="title"></div>
+                            <div class="col-1 text-center">
+                                {% if music.image.url|length != 0 %}
+                                    <img src="{{ music.image|thumbnail_url:'avatar' }}" alt="" class="img-sm-lx">
+                                    {% else %}
+                                     <img src="{% static 'logo1.png' %}" alt="" class="img-sm-lx">
+                                {% endif %}
                             </div>
-                            <div class="progress-bar progress col-12 mb-3">
-                            </div>
-                          </div>
-                          <ul class="playlist list-group list-group-flush">
-                            {% for music in music_trakss %}
-                            <li audio_url="{{ music.music.url }}"
-                            {% if music.image.url|length == 0 %}
-                            img_url="{{ music.image.url }}"
-                            {% else %}
-                            img_url="{% static 'logo1.png' %}"
-                            {% endif %}
-                            class="active list-group-item playlist-item">
-                                <div class="col-12 col-lg-6 col-md-6">
-                                   {{ forloop.counter }} - {{ music.name }}
-                                </div>
+                            <div class="col-3 text-center"><h5 class="mt-md-2">{{ music.name }}</h5></div>
+                            <div class="col-5 text-center"><audio controls src="{{ music.music.url }}"></audio></div>
 
-                                <div class="col-12 col-lg-4 col-md-4 right_list1 " data-id="{{ music.id }}" data-type="musictrack" data-action="like" title="Нравится">
+                            <div class="col-2 text-center pt-xl-2 pt-md-2">
+                                {% if user.is_authenticated %}
+                                <button class="btn btn-flickr btn-round btn-sm " data-id="{{ music.id }}" data-type="musictrack" data-action="like" title="Нравится">Проголосовать
+                                   <i class="fa fa-heart lents"></i>
+                                      <span data-count="like" style="font-size: 17px;">{{ music.reiting }}</span>
+                                  </button>
+                                {% else %}
+                                <button type="button" class="btn btn-primary btn-round btn-sm" data-toggle="modal" data-target="#myModal">
+                                  Проголосовать
                                     <i class="fa fa-heart lents"></i>
-                                    <span data-count="like" style="font-size: 17px;">{{ music.votes.likes.count }} Голосов</span>
-                                </div>
-
-
+                                    <span>{{ music.reiting }}</span>
+                                </button>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <hr>
+                    </div>
+                {% endfor %}
+                <div class="col-6 center">
+                    <hr>
+                    <nav aria-label="Page navigation example">
+                        <ul id="pagination1" class="pagination danger center">
+                            {% if page_obj.has_previous %}
+                            <li class="page-item">
+                                <a class="page-link" href="?page={{ pag }}{{ page_obj.previous_page_number }}" aria-label="Previous">
+                                    <span aria-hidden="true"><i class="fa fa-angle-double-left" aria-hidden="true"></i></span>
+                                </a>
                             </li>
-                           {% endfor %}
-                          </ul>
-                      </div>
-                      <audio id="audio-player" class="d-none" src="" type="audio/mp3" controls="controls"></audio>
-                    </section>
+                               {% else %}
+                                <li></li>
+                            {% endif %}
+                            {% for pag in page_obj.paginator.page_range %}
+                            <li class="page-item">
+                                <a class="page-link" href="?page={{ pag }}">{{ pag }}</a>
+                            </li>
+                            {% endfor %}
+                            {% if page_obj.has_next %}
+                            <li class="page-item">
+                                <a class="page-link" href="?page={{ pag }}{{ page_obj.next_page_number }}" aria-label="Next">
+                                    <span aria-hidden="true"><i class="fa fa-angle-double-right" aria-hidden="true"></i></span>
+                                </a>
+                            </li>
+                            {% else %}
+                                <li></li>
+                            {% endif %}
+                        </ul>
+                    </nav>
+                    <hr>
                 </div>
             </div>
         </div>
     </div>
 
-
-
-{% endblock %}
-{% block script %}
-    <script>
-    function getCookie(name) {
-        var cookieValue = null;
-        if (document.cookie && document.cookie !== '') {
-            var cookies = document.cookie.split(';');
-            for (var i = 0; i < cookies.length; i++) {
-                var cookie = jQuery.trim(cookies[i]);
-                // Does this cookie string begin with the name we want?
-                if (cookie.substring(0, name.length + 1) === (name + '=')) {
-                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                    break;
-                }
-            }
-        }
-        return cookieValue;
-    }
-    $(function () {
-        $.ajaxSetup({
-            headers: { "X-CSRFToken": getCookie("csrftoken") }
-        });
-    });
-
-    function like() {
-        var like = $(this);
-        var type = like.data('type');
-        var pk = like.data('id');
-        var action = like.data('action');
-        var dislike = like.next();
-
-        $.ajax({
-            url : "/api/" + type + "/" + pk + "/" + action + "/",
-            type : 'POST',
-            data : {'obj' : pk},
-            success : function (json) {
-                like.find("[data-count='like']").text(json.like_count);
-            }
-    });
-
-    return false;
-    }
-
-    // Подключение обработчиков
-    $(function() {
-        $('[data-action="like"]').click(like);
-    });
-
-    </script>
 {% endblock %}

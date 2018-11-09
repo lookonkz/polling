@@ -1,7 +1,7 @@
 from django.views import View
 from django.contrib.contenttypes.models import ContentType
-from .models import LikeDislike, MusicClip, Category, MusicTrack
-from django.views.generic import TemplateView, ListView
+from .models import LikeDislike, MusicTrack
+from django.views.generic import TemplateView, ListView, DetailView
 from django.http import JsonResponse
 from django.views.decorators.cache import cache_page
 from django.utils.decorators import method_decorator
@@ -42,15 +42,8 @@ class VotesView(View):
             })
 
 
-class MusicList(ListView):
-    model = MusicClip
-    context_object_name = 'music_list'
-    template_name = 'musics/music_list.html'
-    paginate_by = 50
-
-
 class HomeViews(ListView):
-    template_name = 'musics/home2.html'
+    template_name = 'musics/home.html'
     model = MusicTrack
     context_object_name = 'music_trakss'
     paginate_by = 25
@@ -76,3 +69,9 @@ class HomeViews1(TemplateView):
         context = super().get_context_data(**kwargs)
         context['music_trakss'] = MusicTrack.objects.all()
         return context
+
+
+class TrackDetailView(DetailView):
+    model = MusicTrack
+    template_name = 'musics/trackdetai.html'
+    context_object_name = 'track'
