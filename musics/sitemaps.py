@@ -1,6 +1,5 @@
 from django.contrib.sitemaps import Sitemap
 from musics.models import MusicTrack
-from django.urls import reverse
 
 
 class MusicTrackSitemap(Sitemap):
