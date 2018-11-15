@@ -43,7 +43,7 @@ class VotesView(View):
 
 
 class HomeViews(ListView):
-    template_name = 'musics/home.html'
+    template_name = 'musics/home2.html'
     model = MusicTrack
     context_object_name = 'music_trakss'
     paginate_by = 25
