@@ -88,6 +88,7 @@ body.royal_preloader {
     bottom: auto;
 }
 
+
 /* Number Mode */
 
 #royal_preloader.royal_preloader_number .royal_preloader_percentage {
@@ -8551,11 +8552,76 @@ ul.countdown li.seperator {
 
 
 @media (min-width: 992px){
-    .vvvv{
-        width:100%;
+    .vvvv {
+        width: 100%;
         height: 600px;
     }
 }
-
+@media (max-width: 1199px) and (min-width: 993px) {
+    /*Design*/
+    body {
+        min-width: unset!important;
+        width: 100%;
+    }
+    .img_100vw {
+        width: 100% !important;
+    }
+    .img_80vw{
+        width: 80% !important;
+    }
+    .full-height{
+        height: 100vh;
+    }
+    .container {
+        min-width: unset !important;
+        max-width: unset !important;
+        width: 100%;
+    }
+}
+@media (max-width: 992px) {
+    /*Design*/
+    body {
+        min-width: unset!important;
+        width: 100%;
+    }
+    .img_100vw {
+        width: 100% !important;
+    }
+    .img_80vw{
+        width: 80% !important;
+    }
+    .full-height{
+        height: 100vh;
+    }
+    .container {
+        min-width: unset !important;
+        max-width: unset !important;
+        width: 100%;
+    }
+}
+@media (max-width: 767px) {
+    /*Design*/
+    body {
+        min-width: unset!important;
+        width: 100%;
+    }
+    .img_100vw {
+        width: 100% !important;
+    }
+    .img_80vw{
+        width: 80% !important;
+    }
+    .desc_mobile {
+        background-image: url(../img/mobile-bg2.jpg)!important;
+    }
+    .full-height{
+        height: 100vh;
+    }
+    .container {
+        min-width: unset !important;
+        max-width: unset !important;
+        width: 100%;
+    }
+}
 
 
