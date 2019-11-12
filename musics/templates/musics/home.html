@@ -93,20 +93,20 @@
                             <div class="col-3 text-center"><h5 class="mt-md-2">{{ music.name }}</h5></div>
                             <div class="col-5 text-center"><audio controls src="{{ music.music.url }}"></audio></div>
 
-                            <div class="col-2 text-center pt-xl-2 pt-md-2">
-                                {% if user.is_authenticated %}
-                                <button class="btn btn-flickr btn-round btn-sm " data-id="{{ music.id }}" data-type="musictrack" data-action="like" title="Нравится">Проголосовать
-                                   <i class="fa fa-heart lents"></i>
-                                      <span data-count="like" style="font-size: 17px;">{{ music.reiting }}</span>
-                                  </button>
-                                {% else %}
-                                <button type="button" class="btn btn-primary btn-round btn-sm" data-toggle="modal" data-target="#myModal">
-                                  Проголосовать
-                                    <i class="fa fa-heart lents"></i>
-                                    <span>{{ music.reiting }}</span>
-                                </button>
-                                {% endif %}
-                            </div>
+                            <!--<div class="col-2 text-center pt-xl-2 pt-md-2">-->
+                                <!--{% if user.is_authenticated %}-->
+                                <!--<button class="btn btn-flickr btn-round btn-sm " data-id="{{ music.id }}" data-type="musictrack" data-action="like" title="Нравится">Проголосовать-->
+                                   <!--<i class="fa fa-heart lents"></i>-->
+                                      <!--<span data-count="like" style="font-size: 17px;">{{ music.reiting }}</span>-->
+                                  <!--</button>-->
+                                <!--{% else %}-->
+                                <!--<button type="button" class="btn btn-primary btn-round btn-sm" data-toggle="modal" data-target="#myModal">-->
+                                  <!--Проголосовать-->
+                                    <!--<i class="fa fa-heart lents"></i>-->
+                                    <!--<span>{{ music.reiting }}</span>-->
+                                <!--</button>-->
+                                <!--{% endif %}-->
+                            <!--</div>-->
                         </div>
                         <hr>
                     </div>
