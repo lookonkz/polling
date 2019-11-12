@@ -94,7 +94,7 @@ class MusicTrack(models.Model):
     reiting = models.IntegerField(verbose_name='количество голосов', default=0, blank=True)
     sorted_list = models.SmallIntegerField(verbose_name='порядок', db_index=True, default=1, blank=True)
     image = ThumbnailerImageField(verbose_name='фото', upload_to='musics/track/img', null=True,
-                                  default='musics/track/img/logo1.png' , blank=True)
+                                  default='musics/track/img/logo1.png', blank=True)
 
     class Meta:
         verbose_name = 'Музыка'
