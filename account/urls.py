@@ -8,7 +8,7 @@ from django.contrib.auth import logout
 
 app_name = 'account'
 urlpatterns = [
-    path('logout/', logout, name='account_logout'),
+    path('logout/', logout_then_login, name='account_logout'),
     # path('register/', register, name='register'),
     path('login/', auth_views.LoginView.as_view(template_name='account/login.html'), name='login'),
     # path('logout/', auth_views.LogoutView.as_view(template_name='account/registration/logged_out.html'), name='logout'),
