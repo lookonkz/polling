@@ -52,19 +52,7 @@
              <h5>Пожалуйста авторизуйтесь, что бы проголосовать за любимого участника!</h5>
           </div>
           <div class="modal-footer">
-            {% load socialaccount %}
-            <a class="btn   btn-social-icon btn-vk" href="{% provider_login_url "vk" %}">
-                <span class="fa fa-vk"></span>
-            </a>
-            <a class="btn  btn-social-icon btn-facebook" href="{% provider_login_url "facebook" %}">
-                <span class="fa fa-facebook"></span>
-            </a>
-            <a class="btn  btn-social-icon btn-google" href="{% provider_login_url "google" %}">
-                <span class="fa fa-google"></span>
-            </a>
-{#            <a class="btn  btn-social-icon btn-twitter" href="{% provider_login_url "mailru" %}">#}
-{#                <span class="fa fa-mail-forward"></span>#}
-{#            </a>#}
+
           </div>
         </div>
       </div>
@@ -97,8 +85,8 @@
                                 {% if user.is_authenticated and not golos %}
                                 <form action="" method="post">
                                     {% csrf_token %}
-                                    <input type="number" value="{{music.id}}" style="display: none">
-                                    <button class="btn btn-flickr btn-round btn-sm "  title="Нравится">Проголосовать
+                                    <input type="number" name="golos" value="{{music.id}}" style="display: none">
+                                    <button type="submit" class="btn btn-flickr btn-round btn-sm "  title="Нравится">Проголосовать
                                        <i class="fa fa-heart lents"></i>
                                         <!--<span data-count="like" style="font-size: 17px;">{{ music.reiting }}</span>-->
                                     </button>

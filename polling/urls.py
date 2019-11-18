@@ -35,9 +35,10 @@ handler500 = curry(server_error, template_name='errs/500.html')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('accounts/', include('allauth.urls')),
+    path('account/', include('account.urls', namespace='account')),
+    # path('accounts/', include('allauth.urls')),
     path('', include('musics.urls', namespace='musics')),
-    path('api/', include('ajax.urls', namespace='ajax')),
+    # path('api/', include('ajax.urls', namespace='ajax')),
     path('sitemap.xml', cache_page(86400)(sitemap_views.sitemap), {'sitemaps': sitemaps},
         name='django.contrib.sitemaps.views.sitemap'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

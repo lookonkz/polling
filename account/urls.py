@@ -3,13 +3,14 @@ from django.contrib.auth import views as auth_views
 from django.contrib.auth.views import logout_then_login
 from .views import register
 from django.urls import reverse_lazy
-from allauth.account.views import LogoutView
-app_name = 'account'
+# from allauth.account.views import LogoutView
+from django.contrib.auth import logout
 
+app_name = 'account'
 urlpatterns = [
-    path('logout/', LogoutView.as_view(), name='account_logout'),
+    path('logout/', logout, name='account_logout'),
     # path('register/', register, name='register'),
-    # path('login/', auth_views.LoginView.as_view(template_name='account/login.html'), name='login'),
+    path('login/', auth_views.LoginView.as_view(template_name='account/login.html'), name='login'),
     # path('logout/', auth_views.LogoutView.as_view(template_name='account/registration/logged_out.html'), name='logout'),
     # path('logout-then-login/', logout_then_login, name='logout_then_login'),
     # path('password-change/', auth_views.PasswordChangeView.as_view(

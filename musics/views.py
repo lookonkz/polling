@@ -6,6 +6,8 @@ from django.http import JsonResponse
 from django.views.decorators.cache import cache_page
 from django.utils.decorators import method_decorator
 from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
 # from django_filters.views import FilterView
 # from .filters import MusicTrackFilter
 
@@ -43,6 +45,7 @@ class VotesView(View):
             })
 
 
+@method_decorator(login_required, name='dispatch')
 class HomeViews(ListView):
     template_name = 'musics/home.html'
     model = MusicTrack
@@ -69,7 +72,8 @@ class HomeViews(ListView):
 
     def post(self, request):
         if request.method == "POST":
-            golos = GolosMus.objects.create(user=request.user, music_id=int(request.POST.get('golos')))
+            print(request.POST)
+            GolosMus.objects.create(user=request.user, music_id=int(request.POST.get('golos')))
             return redirect('musics:home')
 
 
