@@ -106,3 +106,16 @@ class MusicTrack(models.Model):
 
     def get_absolute_url(self):
         return reverse('musics:track', kwargs={'pk':self.pk})
+
+
+class GolosMus(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    music = models.ForeignKey(MusicTrack, on_delete=models.CASCADE)
+
+    class Meta:
+        unique_together = ['user', 'music']
+        verbose_name = 'Голоса'
+        verbose_name_plural = 'Голоса'
+
+    def __str__(self):
+        return '{}'.format(self.id)

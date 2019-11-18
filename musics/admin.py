@@ -1,8 +1,9 @@
 from django.contrib import admin
-from .models import MusicClip, LikeDislike, Category, MusicTrack
+from .models import MusicClip, LikeDislike, Category, MusicTrack, GolosMus
 # Register your models here.
 
 admin.site.register(MusicClip)
+admin.site.register(GolosMus)
 
 
 @admin.register(Category)

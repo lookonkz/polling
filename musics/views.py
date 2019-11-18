@@ -1,10 +1,11 @@
 from django.views import View
 from django.contrib.contenttypes.models import ContentType
-from .models import LikeDislike, MusicTrack
+from .models import LikeDislike, MusicTrack, GolosMus
 from django.views.generic import TemplateView, ListView, DetailView
 from django.http import JsonResponse
 from django.views.decorators.cache import cache_page
 from django.utils.decorators import method_decorator
+from django.shortcuts import render, redirect
 # from django_filters.views import FilterView
 # from .filters import MusicTrackFilter
 
@@ -55,11 +56,21 @@ class HomeViews(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        try:
+            context['golos'] = GolosMus.objects.get(user=self.request.user)
+        except:
+            context['golos'] = None
+
         if self.request.GET.get('page'):
             if int(self.request.GET.get('page')) > 1:
                 page = 25 * int(self.request.GET.get('page')) - 25 + 1
                 context['countpage'] = page
         return context
+
+    def post(self, request):
+        if request.method == "POST":
+            golos = GolosMus.objects.create(user=request.user, music_id=int(request.POST.get('golos')))
+            return redirect('musics:home')
 
 
 class HomeViews1(TemplateView):
